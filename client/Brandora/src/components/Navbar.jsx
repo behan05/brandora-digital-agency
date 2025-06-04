@@ -10,9 +10,9 @@ import {
 import logoImg from '../assets/imgs/logo.png'
 import { Link, NavLink } from 'react-router-dom';
 import ListIcon from '@mui/icons-material/List';
-import CloseIcon from '@mui/icons-material/Close';
 import CustomButton from './CustomButton';
-
+import { toggleMenu } from '../redux/slices/menu';
+import { useDispatch, useSelector } from "react-redux";
 
 const menuItem = [
   {
@@ -34,9 +34,15 @@ const menuItem = [
 ];
 
 function Navbar() {
+
+  const dispatch = useDispatch();
+  const { isMenuOpen } = useSelector((state) => state.menu);
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
+  const handleMenuClick = () => {
+    dispatch(toggleMenu())
+  }
   return (
     <Box
       component={'header'}
@@ -44,7 +50,8 @@ function Navbar() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        position: 'static'
+        position: 'static',
+        flexWrap: 'wrap'
       }}
     >
       <Box
@@ -84,15 +91,15 @@ function Navbar() {
         sx={{
           ml: isSmallScreen && 'auto',
           mr: 1,
-          bgcolor: 'inherit'
+          bgcolor: 'inherit',
         }}>
         Raise Query ?
       </CustomButton>
 
       {isSmallScreen && (
         <Tooltip title='Menu'>
-          <IconButton edge='end'>
-            <ListIcon sx={{ cursor: 'pointer' }} />
+          <IconButton edge='end' onClick={handleMenuClick}>
+            {!isMenuOpen && <ListIcon sx={{ cursor: 'pointer' }} />}
           </IconButton>
         </Tooltip>
       )}
