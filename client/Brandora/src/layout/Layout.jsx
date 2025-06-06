@@ -7,7 +7,7 @@ import { Outlet } from "react-router-dom";
 function Layout() {
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up('md'));
-  const contentPadding = isMd ? theme.spacing(30) : theme.spacing(2);
+  const contentPadding = isMd ? theme.spacing(22) : theme.spacing(2);
 
   return (
     <Box
