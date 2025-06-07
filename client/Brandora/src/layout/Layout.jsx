@@ -1,6 +1,6 @@
 import { Box, Stack, useMediaQuery, useTheme } from "../mui/muiComponents";
 import Navbar from '../components/Navbar';
-import landingPageImageBg from '../assets/imgs/landingPageBackgroundImg.png'
+import custumBgImage from '../assets/imgs/customBgImage.png'
 import Sidebar from "../components/Sidebar";
 import { Outlet } from "react-router-dom";
 
@@ -16,7 +16,7 @@ function Layout() {
         flexDirection: 'column',
         minHeight: '90vh',
         backgroundColor: theme.palette.background.default,
-        backgroundImage: `url(${landingPageImageBg})`,
+        backgroundImage: `url(${custumBgImage})`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         objectFit: 'cover'

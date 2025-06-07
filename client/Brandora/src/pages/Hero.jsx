@@ -21,8 +21,20 @@ import logo3 from "../assets/companyLogo/logo-3.png";
 import logo4 from "../assets/companyLogo/logo-4.png";
 import logo5 from "../assets/companyLogo/logo-5.png";
 import logo6 from "../assets/companyLogo/logo-5.png";
-import whoWeAre from "../assets/imgs/whoWeAre.jpg";
 import WhoWeAreCard from '../components/WhoWeAreCard';
+import whoWeAre from "../assets/imgs/whoWeAre.jpg";
+import whyChooseUs from "../assets/imgs/whyChooseUs.jpg";
+import process1 from "../assets/imgs/process1.jpg";
+import process2 from "../assets/imgs/process2.jpg";
+import process3 from "../assets/imgs/process3.jpg";
+
+
+
+import LaunchIcon from '@mui/icons-material/Launch';
+import GradeIcon from '@mui/icons-material/Grade';
+import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
 
 function Hero() {
     const theme = useTheme();
@@ -100,11 +112,19 @@ function Hero() {
                     textAlign: { xs: 'center', sm: 'left' },
                 }}
             >
-                <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+                <Typography
+                    variant="subtitle1"
+                    color="text.secondary"
+                    gutterBottom
+                >
                     [ Digital Marketing ]
                 </Typography>
 
-                <Typography variant="h3" component="h1" fontWeight="bold">
+                <Typography
+                    variant={isSmallScreen ? 'h4' : "h3"}
+                    component="h1"
+                    fontWeight="bold"
+                >
                     Innovative
                 </Typography>
 
@@ -115,23 +135,36 @@ function Hero() {
                     sx={{ textAlign: { xs: 'center', sm: 'left' }, mt: 1 }}
                 >
                     <Typography
-                        variant="h2"
+                        variant={isSmallScreen ? 'h4' : "h3"}
                         color="text.secondary"
+                        fontWeight="bold"
                         sx={{ fontStyle: 'italic' }}
                     >
                         Solutions
                     </Typography>
 
-                    <Typography variant="h2" color={theme.palette.text.primary}>
+                    <Typography
+                        variant={isSmallScreen ? 'h4' : "h3"}
+                        fontWeight="bold"
+                        color={theme.palette.text.primary}
+                    >
                         For Your
                     </Typography>
                 </Stack>
 
-                <Typography variant="h2" color={theme.palette.text.primary} mb={2}>
+                <Typography
+                    variant={isSmallScreen ? 'h4' : "h3"}
+                    fontWeight="bold"
+                    color={theme.palette.text.primary} mb={2}
+                >
                     Digital Brands
                 </Typography>
 
-                <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+                <Typography
+                    variant="subtitle1"
+                    color="text.secondary"
+                    gutterBottom
+                >
                     [ Marketing Agency ]
                 </Typography>
 
@@ -139,7 +172,13 @@ function Hero() {
                     spacing={3}
                     alignItems={isSmallScreen ? 'center' : 'flex-start'}
                 >
-                    <Typography variant="body1" color="text.secondary" maxWidth="md">
+                    <Typography
+                        variant="body1"
+                        color="text.secondary"
+                        maxWidth="md"
+                        letterSpacing={1.5}
+                        gutterBottom
+                    >
                         Experience the transformative power of our expert marketing strategies as we partner with you to elevate your brand's digital presence. From data-driven campaigns to cutting-edge digital solutions, we tailor every strategy to meet your unique business goals. Let us take your brand to new heights online — where visibility, engagement, and growth converge.
                     </Typography>
 
@@ -253,6 +292,7 @@ function Hero() {
                             overflow: 'hidden',
                             borderRadius: 3,
                             boxShadow: 3,
+                            transition: 'all 0.3s ease',
 
                             '&:hover': {
                                 filter: 'brightness(150%)',
@@ -281,19 +321,7 @@ function Hero() {
                     maxHeight: 800,
                     gap: { xs: 1, sm: 2, md: 2 },
                     p: { xs: 0.5, sm: 2, md: 4 },
-                    '&::-webkit-scrollbar': {
-                        width: '0.6rem',
-                    },
-                    '&::-webkit-scrollbar-track': {
-                        boxShadow: 'inset 0 0 0.375rem rgb(79, 78, 78)',
-                        borderRadius: '0.8rem',
-                    },
-                    '&::-webkit-scrollbar-thumb': {
-                        boxShadow: 'inset 0 0 0.375rem rgba(238, 238, 238, 0.9)',
-                        background: 'linear-gradient(155deg,rgb(97, 39, 131) 0%,rgba(131, 98, 26, 0.2) 50%,rgba(92, 52, 29, 0.2) 100%)',
-                        borderRadius: '0.8rem',
-                        outline: 'none'
-                    },
+
                 }}>
                     {WhoWeAreCardItems.map((item) => (
                         <WhoWeAreCard
@@ -315,19 +343,24 @@ function Hero() {
                 py: 6
             }}
             >
-                <Stack textAlign="center" color={theme.palette.text.primary}>
+                <Stack textAlign="center" letterSpacing={1} color={theme.palette.text.primary}>
                     <Typography variant="subtitle1" color="text.secondary" gutterBottom>
                         Our Services
                     </Typography>
-                    <Typography variant="h5" component="h1" color={theme.palette.text.primary}>
-                        Build brand visibility with{' '}
+                    <Typography
+                        variant={isSmallScreen ? 'h5' : "h4"}
+                        fontWeight={900}
+                        component="h1"
+                        color={theme.palette.text.primary}
+                    >
+                        Build Brand Visibility With {<br></br>} Marketing{' '}
                         <Typography
-                            variant="h5"
+                            variant={isSmallScreen ? 'h5' : "h4"}
                             component="span"
                             fontStyle="italic"
                             color="text.secondary"
                         >
-                            marketing strategies
+                            Strategies
                         </Typography>
                     </Typography>
                 </Stack>
@@ -355,8 +388,19 @@ function Hero() {
                         filter: 'drop-shadow(0 0 2rem #000)',
                         background: 'linear-gradient(125deg,rgba(92, 52, 29, 0.2) 0%,rgba(131, 98, 26, 0.2) 50%,rgb(97, 39, 131) 100%)',
                     }}>
-                        <Typography variant='h5' gutterBottom>Find out more our service</Typography>
-                        <Typography variant='subtitle2' gutterBottom>
+                        <Typography
+                            variant='h5'
+                            gutterBottom
+                        >
+                            Find out more our service
+                        </Typography>
+                        <Typography
+                            variant='body1'
+                            color='text.primary'
+                            fontWeight={400}
+                            letterSpacing={1}
+                            gutterBottom
+                        >
                             occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </Typography>
                         <Stack mt={'auto'}>
@@ -365,6 +409,426 @@ function Hero() {
                             </CustomButton>
                         </Stack>
                     </Stack>
+                </Box>
+            </Box>
+
+            {/* === Our Projects Section === */}
+            <Box>
+                <Stack textAlign="start" my={6} maxWidth={800}>
+                    <Typography
+                        variant="subtitle1"
+                        color="text.secondary"
+                        letterSpacing={1}
+                        gutterBottom
+                    >
+                        Our Projects
+                    </Typography>
+
+                    <Typography
+                        variant={isSmallScreen ? 'h5' : 'h4'}
+                        component="h1"
+                        fontStyle="italic"
+                        fontWeight={900}
+                        color="text.secondary"
+                        letterSpacing={1}
+                        gutterBottom
+                    >
+                        Featured{' '}
+                        <Box component="span" color="text.primary" fontStyle="normal">
+                            WOW Projects!
+                        </Box>
+                    </Typography>
+
+                    <Typography variant="body2" color="text.secondary">
+                        Explore our collection of cutting-edge{' '}
+                        <Box component="span" color="text.primary">products</Box> designed to empower your{' '}
+                        <Box component="span" color="text.primary">business</Box> and elevate your{' '}
+                        <Box component="span" color="text.primary">creative potential</Box>. Each product is meticulously
+                        crafted to provide{' '}
+                        <Box component="span" color="text.primary">exceptional performance</Box>, usability, and results.
+                    </Typography>
+                </Stack>
+
+                <Box
+                    sx={{
+                        width: '100%',
+                        overflow: 'hidden',
+                        my: 2,
+                        borderRadius: 2,
+                        boxShadow: 3,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 1
+                    }}
+                >
+                    <Box
+                        component="iframe"
+                        src="https://react-admin-panel-behan.vercel.app"
+                        sx={{
+                            width: '100%',
+                            height: 800,
+                            border: 'none',
+                            borderRadius: 2,
+                        }}
+                    />
+
+                    {[
+                        {
+                            projectName: 'Rebuild Admin Panel',
+                            description:
+                                'A modernized, intuitive admin dashboard designed for better data visualization, streamlined content management, and full user activity tracking. Built with React, MUI, and integrated with backend APIs for seamless operations.',
+                            category: 'Web-Application',
+                            releaseDate: '06/04/2025',
+                        },
+                    ].map((project, index) => (
+                        <Stack key={index} p={2}>
+                            <Typography
+                                color='text.secondary'
+                                variant='subtitle1'
+                                letterSpacing={2}
+                                fontWeight={900}
+                                component={'span'}
+                            >
+                                Project Name:{' '}
+                                <Typography
+                                    gutterBottom
+                                    color='text.primary'
+                                    variant='body1'
+                                    letterSpacing={1}
+                                    fontWeight={400}
+                                    component={'span'}
+                                >
+                                    {project.projectName}
+                                </Typography>
+                            </Typography>
+
+                            <Typography
+                                color='text.secondary'
+                                variant='subtitle1'
+                                letterSpacing={2}
+                                fontWeight={900}
+                                component={'span'}
+                            >
+                                Description:{' '}
+                                <Typography
+                                    gutterBottom
+                                    color='text.primary'
+                                    variant='body1'
+                                    letterSpacing={1}
+                                    fontWeight={400}
+                                    component={'span'}
+                                >
+                                    {project.description}
+                                </Typography>
+                            </Typography>
+
+                            <Typography
+                                color='text.primary'
+                                variant='subtitle1'
+                                letterSpacing={2}
+                                fontWeight={900}
+                                component={'span'}
+                            >
+                                Category: {' '}
+                                <Typography
+                                    gutterBottom
+                                    color='text.primary'
+                                    variant='body1'
+                                    letterSpacing={1}
+                                    component={'span'}
+                                    fontWeight={400}
+                                >
+                                    {project.category}
+                                </Typography>
+                            </Typography>
+
+                            <Typography
+                                color='text.primary'
+                                variant='subtitle1'
+                                letterSpacing={2}
+                                fontWeight={900}
+                                component={'span'}
+                            >
+                                Release Date: {' '}
+                                <Typography
+                                    gutterBottom
+                                    color='text.primary'
+                                    variant='body1'
+                                    letterSpacing={1}
+                                    component={'span'}
+                                    fontWeight={400}
+                                >
+                                    {project.releaseDate}
+                                </Typography>
+                            </Typography>
+
+                            {/* take demo */}
+                            <CustomButton
+                                redirectedTo="https://react-admin-panel-behan.vercel.app"
+                                target="_blank"
+                                sx={{
+                                    width: 'fit-content',
+                                    my: 2,
+                                    gap: 2,
+                                    cursor: 'pointer',
+                                }}
+                                endIcon={<LaunchIcon />}
+                            >
+                                Launch Admin Panel
+                            </CustomButton>
+                        </Stack>
+                    ))}
+                </Box>
+
+
+            </Box>
+
+            {/* == Why Choose Us Section == */}
+            <Box>
+                <Stack textAlign="start" my={6} maxWidth={900}>
+                    <Typography
+                        variant="subtitle1"
+                        color="text.secondary"
+                        letterSpacing={1}
+                        gutterBottom
+                    >
+                        Why Choose Us
+                    </Typography>
+
+                    <Typography
+                        variant={isSmallScreen ? 'h5' : 'h4'}
+                        component="h1"
+                        fontStyle="italic"
+                        fontWeight={900}
+                        color="text.secondary"
+                        letterSpacing={1}
+                        gutterBottom
+                    >
+                        Expertise{' '}
+                        <Box component="span" color="text.primary" fontStyle="normal">
+                            for your digital growth journey
+                        </Box>
+                    </Typography>
+
+                    <Typography variant="body2" color="text.secondary">
+                        Our dedicated team is{' '}
+                        <Box component="span" color="text.primary">committed</Box> to understanding your {' '}
+                        <Box component="span" color="text.primary">unique needs,</Box> ensuring that we provide innovative{' '}
+                        <Box component="span" color="text.primary">strategies </Box>that drive results. With a focus on{' '}
+                        <Box component="span" color="text.primary">quality and integrity.</Box>
+                    </Typography>
+                </Stack>
+
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: isSmallScreen ? 'column' : isLg ? 'column' : 'row',
+                        gap: 1,
+                        width: '100%',
+                    }}
+                >
+                    {/* Cards */}
+                    <Box
+                        flex={1}
+                        sx={{
+                            display: 'grid',
+                            gridTemplateColumns: isSmallScreen ? '1fr' : 'repeat(2, 1fr)',
+                            gap: 2,
+                            order: isLg && 2,
+                        }}
+                    >
+                        {[
+                            {
+                                icon: <GradeIcon sx={{ fontSize: '2rem', color: theme.palette.warning.main }} />,
+                                title: `Proven Track Record`,
+                                content: 'We’ve helped businesses across industries achieve their goals'
+                            },
+                            {
+                                icon: <TipsAndUpdatesIcon sx={{ fontSize: '2rem', color: theme.palette.success.main }} />,
+                                title: `Tailored Solutions`,
+                                content: `Your business is unique, and so are our strategies.`
+                            },
+                            {
+                                icon: <AttachMoneyIcon sx={{ fontSize: '2rem', color: theme.palette.success.main }} />,
+                                title: `Competitive Pricing`,
+                                content: `We offer our top-quality services at competitive prices`
+                            },
+                            {
+                                icon: <DeveloperBoardIcon sx={{ fontSize: '2rem', color: theme.palette.warning.main }} />,
+                                title: `Data-Driven Approach`,
+                                content: `We leverage data and insights to make informed decisions`
+                            },
+                        ].map((card, index) => (
+                            <Stack
+                                key={index}
+                                borderRadius={2}
+                                p={2}
+                                boxShadow={3}
+                                sx={{
+                                    transition: 'all 0.3s ease',
+
+                                    '&:hover': {
+                                        transform: 'translateY(-15px)'
+                                    }
+                                }}
+                            >
+                                <Stack pb={isSmallScreen ? 4 : 6}>
+                                    {card.icon}
+                                </Stack>
+                                <Typography
+                                    color='text.secondary'
+                                    variant='subtitle1'
+                                    letterSpacing={1}
+                                    gutterBottom
+                                    fontWeight={900}
+                                >
+                                    {card.title}
+                                </Typography>
+                                <Typography
+                                    color='text.primary'
+                                    variant='body1'
+                                    letterSpacing={1}
+                                    gutterBottom
+                                    fontWeight={400}
+                                >
+                                    {card.content}
+                                </Typography>
+                            </Stack>
+                        ))}
+                    </Box>
+
+                    {/* Why Choose Us Image */}
+                    <Box flex={1}>
+                        <Stack
+                            component={'img'}
+                            src={whyChooseUs}
+                            alt='Why Choose Us Image'
+                            width={'100%'}
+                            height={'100%'}
+                            borderRadius={2}
+                            boxShadow={3}
+
+                            sx={{
+                                objectFit: 'cover',
+                                opacity: 0.8,
+                                transition: 'all 0.3s ease',
+                                filter: 'brightness(100%)',
+                                '&:hover': {
+                                    opacity: 1,
+                                    filter: 'brightness(120%)',
+                                }
+                            }}
+                        />
+                    </Box>
+                </Box>
+            </Box>
+
+            {/* == Our Process Section == */}
+            <Box>
+                <Stack textAlign="center" my={4}>
+                    <Typography
+                        variant="subtitle1"
+                        color="text.secondary"
+                        letterSpacing={1}
+                        gutterBottom
+                    >
+                        Our Process
+                    </Typography>
+
+                    <Typography
+                        variant={isSmallScreen ? 'h5' : 'h4'}
+                        component="h1"
+                        fontStyle="italic"
+                        fontWeight={900}
+                        color="text.secondary"
+                        letterSpacing={1}
+                        gutterBottom
+                    >
+                        Our proven{' '}
+                        <Box component="span" color="text.primary" fontStyle="normal">
+                            process for {<br></br>} achieving success
+                        </Box>
+                    </Typography>
+                </Stack>
+
+                <Box
+                    gap={2}
+                    sx={{
+                        display: 'grid',
+                        gridTemplateColumns: isSmallScreen ? '1fr' : isLg ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)',
+
+                    }}
+                >
+
+                    {[
+                        {
+                            number: '01.',
+                            title: `Discovery Phase`,
+                            content: 'During this initial stage, we delve deep into understanding your business goals, target audience, and market landscape.',
+                            image: process1,
+                        },
+                        {
+                            number: '02.',
+                            title: `Strategy Development`,
+                            content: 'With insights gathered from the discovery phase, we develop a customized strategy tailored to your specific needs.',
+                            image: process2,
+                        },
+                        {
+                            number: '03.',
+                            title: `Implementation`,
+                            content: 'Once the strategy is finalized and approved, we roll up our sleeves and put the plan into action.',
+                            image: process3,
+                        },
+                    ].map((card, index) => (
+
+                        <Stack borderRadius={2} boxShadow={3} key={index} p={2}>
+                            <Typography
+                                color='text.secondary'
+                                fontWeight={900}
+                                gutterBottom
+                                variant='subtitle2'
+                            >
+                                {card.number}
+                            </Typography>
+
+                            <Typography
+                                color='text.secondary'
+                                fontWeight={900}
+                                gutterBottom
+                                letterSpacing={1}
+                                variant='subtitle1'
+                            >
+                                {card.title}
+                            </Typography>
+
+                            <Typography
+                                color='text.primary'
+                                fontWeight={400}
+                                gutterBottom
+                                letterSpacing={1}
+                                variant='body1'
+                            >
+                                {card.content}
+                            </Typography>
+                            <Stack
+                                component={'img'}
+                                src={card.image}
+                                alt={card.title}
+                                maxWidth={"100%"}
+                                sx={{
+                                    objectFit: 'cover',
+                                    borderRadius: 2,
+                                    opacity: 0.8,
+                                    transition: 'all 0.3s ease',
+                                    filter: 'brightness(100%)',
+                                    '&:hover': {
+                                        opacity: 1,
+                                        filter: 'brightness(120%)',
+                                    }
+                                }}
+                            />
+                        </Stack>
+                    ))}
                 </Box>
             </Box>
         </Box>

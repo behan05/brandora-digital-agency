@@ -18,11 +18,11 @@ function Cards({ icon, header, content }) {
                 {icon}
             </Stack>
 
-            <Typography variant='subtitle1' color='text.primary'>
+            <Typography variant='subtitle2' color='text.secondary' gutterBottom>
                 {header}
             </Typography>
 
-            <Typography variant='body1' color='text.primary'>
+            <Typography variant='body1' color='text.primary' fontWeight={400} letterSpacing={1}>
                 {content}
             </Typography>
         </Box>
