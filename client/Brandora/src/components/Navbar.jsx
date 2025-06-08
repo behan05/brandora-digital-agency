@@ -100,8 +100,8 @@ function Navbar() {
         </Stack>
       )}
 
-      {/* Support Button */}
-      <CustomButton redirectedTo={'/support'}
+      {/* contact Button */}
+      <CustomButton redirectedTo={'/contact'}
         sx={{
           ml: isSmallScreen && 'auto',
           mr: 1,

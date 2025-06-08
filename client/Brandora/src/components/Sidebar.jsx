@@ -54,9 +54,10 @@ function Sidebar() {
           </Tooltip>
         </Stack>
         {[
-          { text: 'Home', path: '/home' },
+          { text: 'Home', path: '/' },
           { text: 'About', path: '/about' },
           { text: 'Services', path: '/services' },
+          { text: 'Hire Me', path: '/hire-me' },
           { text: 'Fast Query ?', path: '/contact' },
         ].map(({ text, path }) => (
           <ListItem
