@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Box,
     Typography,
     Stack,
     useTheme,
-    useMediaQuery
+    useMediaQuery,
+    Avatar
 } from '../mui/muiComponents';
 import CustomButton from '../components/CustomButton';
 
@@ -39,7 +40,84 @@ import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
 function Hero() {
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+    const isMd = useMediaQuery(theme.breakpoints.down('md'));
     const isLg = useMediaQuery(theme.breakpoints.down('lg'));
+
+    // Slide Count
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const visibleCards = isSmallScreen ? 1 : isMd ? 2 : isLg ? 2 : 4;
+
+    const sliderCard = [
+        {
+            image: "https://randomuser.me/api/portraits/women/44.jpg",
+            name: "Sophia Carter",
+            designation: "Product Designer",
+            content: "Sophia is a user-centric designer focused on building intuitive interfaces. She loves minimalism and coffee-fueled brainstorming."
+        },
+        {
+            image: "https://randomuser.me/api/portraits/men/32.jpg",
+            name: "Daniel Bennett",
+            designation: "Full Stack Developer",
+            content: "Daniel builds scalable web apps using MERN stack. He’s passionate about open source and clean, reusable code."
+        },
+        {
+            image: "https://randomuser.me/api/portraits/women/68.jpg",
+            name: "Emily Nguyen",
+            designation: "UX Researcher",
+            content: "Emily studies user behavior to shape meaningful digital experiences. Outside work, she’s a keen traveler and reader."
+        },
+        {
+            image: "https://randomuser.me/api/portraits/men/41.jpg",
+            name: "Marcus Lee",
+            designation: "Data Analyst",
+            content: "Marcus helps companies make data-driven decisions. He’s known for simplifying complex datasets into clear stories."
+        },
+        {
+            image: "https://randomuser.me/api/portraits/women/55.jpg",
+            name: "Ava Rodriguez",
+            designation: "Marketing Strategist",
+            content: "Ava crafts growth strategies using performance marketing. She believes storytelling is the future of brand communication."
+        },
+        {
+            image: "https://randomuser.me/api/portraits/men/12.jpg",
+            name: "Liam Patel",
+            designation: "Cybersecurity Engineer",
+            content: "Liam protects systems from threats with smart detection systems. He’s also a part-time bug bounty hunter."
+        },
+        {
+            image: "https://randomuser.me/api/portraits/women/26.jpg",
+            name: "Isabella Green",
+            designation: "AI Researcher",
+            content: "Isabella explores the intersection of ethics and AI. She aims to make intelligent systems more responsible and fair."
+        },
+        {
+            image: "https://randomuser.me/api/portraits/men/66.jpg",
+            name: "Noah Kim",
+            designation: "DevOps Engineer",
+            content: "Noah automates cloud infrastructure for faster deployments. He’s obsessed with CI/CD and Docker-based workflows."
+        },
+        {
+            image: "https://randomuser.me/api/portraits/women/81.jpg",
+            name: "Mia Thompson",
+            designation: "Frontend Developer",
+            content: "Mia builds interactive UIs with React and loves CSS art. She mentors junior devs and runs a coding blog."
+        },
+        {
+            image: "https://randomuser.me/api/portraits/men/17.jpg",
+            name: "Ethan Shah",
+            designation: "Mobile App Developer",
+            content: "Ethan creates sleek cross-platform apps with Flutter. He’s driven by solving real-world problems with mobile tech."
+        }
+    ];
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentIndex((prev) => prev >= sliderCard.length - visibleCards ? 0 : prev + 1);
+        }, 3000);
+        return () => clearInterval(timer);
+    }, [visibleCards, sliderCard.length]);
+
+    const visibleSlides = sliderCard.slice(currentIndex, currentIndex + visibleCards);
 
     const brandLogo = [logo1, logo2, logo3, logo4, logo5, logo6];
 
@@ -284,6 +362,7 @@ function Hero() {
                     </CustomButton>
 
                     <Box
+                        component={'section'}
                         my={4}
                         sx={{
                             objectFit: 'cover',
@@ -314,7 +393,7 @@ function Hero() {
                     </Box>
                 </Box>
 
-                <Box flex={2} sx={{
+                <Box component={'section'} flex={2} sx={{
                     overflowY: 'auto',
                     display: 'grid',
                     gridTemplateRows: 'repeat(auto, 1fr)',
@@ -335,7 +414,7 @@ function Hero() {
             </Box>
 
             {/* === Services Section === */}
-            <Box sx={{
+            <Box component={'section'} sx={{
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 4,
@@ -413,8 +492,16 @@ function Hero() {
             </Box>
 
             {/* === Our Projects Section === */}
-            <Box>
-                <Stack textAlign="start" my={6} maxWidth={800}>
+            <Box component={'section'}>
+                <Stack
+                    textAlign="start"
+                    my={6}
+                    maxWidth={800}
+                    sx={{
+                        background: 'linear-gradient(125deg,rgba(179, 85, 31, 0.1),rgba(179, 85, 209, 0.1) 10%,rgba(176, 71, 237, 0.1))',
+                        backdropFilter: 'blur(20px)',
+                    }}
+                >
                     <Typography
                         variant="subtitle1"
                         color="text.secondary"
@@ -584,7 +671,7 @@ function Hero() {
             </Box>
 
             {/* == Why Choose Us Section == */}
-            <Box>
+            <Box component={'section'}>
                 <Stack textAlign="start" my={6} maxWidth={900}>
                     <Typography
                         variant="subtitle1"
@@ -665,6 +752,8 @@ function Hero() {
                                 p={2}
                                 boxShadow={3}
                                 sx={{
+                                    background: 'linear-gradient(125deg,rgba(179, 85, 31, 0.1),rgba(179, 85, 209, 0.1) 10%,rgba(176, 71, 237, 0.1))',
+                                    backdropFilter: 'blur(20px)',
                                     transition: 'all 0.3s ease',
 
                                     '&:hover': {
@@ -724,7 +813,7 @@ function Hero() {
             </Box>
 
             {/* == Our Process Section == */}
-            <Box>
+            <Box component={'section'}>
                 <Stack textAlign="center" my={4}>
                     <Typography
                         variant="subtitle1"
@@ -756,7 +845,6 @@ function Hero() {
                     sx={{
                         display: 'grid',
                         gridTemplateColumns: isSmallScreen ? '1fr' : isLg ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)',
-
                     }}
                 >
 
@@ -781,7 +869,17 @@ function Hero() {
                         },
                     ].map((card, index) => (
 
-                        <Stack borderRadius={2} boxShadow={3} key={index} p={2}>
+                        <Stack
+                            borderRadius={2}
+                            boxShadow={3}
+                            key={index}
+                            p={2}
+                            sx={{
+                                background: 'linear-gradient(125deg,rgba(179, 85, 31, 0.1),rgba(179, 85, 209, 0.1) ,rgba(176, 71, 237, 0.1))',
+                                backdropFilter: 'blur(20px)',
+
+                            }}
+                        >
                             <Typography
                                 color='text.secondary'
                                 fontWeight={900}
@@ -827,6 +925,77 @@ function Hero() {
                                     }
                                 }}
                             />
+                        </Stack>
+                    ))}
+                </Box>
+            </Box>
+
+            {/* == Testimonials Section == */}
+            <Box component={'section'}>
+                <Stack>
+                    <Typography
+                        variant='subtitle1'
+                        color='text.secondary'
+                        mt={4}
+                        letterSpacing={1}
+                    >
+                        Testimonials
+                    </Typography>
+                    <Typography
+                        variant={isSmallScreen ? 'h5' : 'h4'}
+                        component="h1"
+                        fontStyle="italic"
+                        fontWeight={900}
+                        color="text.secondary"
+                        letterSpacing={1}
+                        gutterBottom
+                    >
+                        Review{' '}
+                        <Box component="span" color="text.primary" fontStyle="normal">
+                            From Clients
+                        </Box>
+                    </Typography>
+                </Stack>
+
+                <Box
+                    component={'section'}
+                    sx={{
+                        display: 'flex',
+                        gap: 2,
+                        justifyContent: 'center',
+                    }}
+                >
+                    {visibleSlides.map((slide, index) => (
+                        <Stack
+                            key={index}
+                            maxWidth={300}
+                            boxShadow={3}
+                            gap={5}
+                            p={2}
+                            borderRadius={2}
+                            sx={{
+                                background: 'linear-gradient(125deg,rgba(179, 85, 31, 0.1),rgba(179, 85, 209, 0.1) 10%,rgba(176, 71, 237, 0.1))',
+                                backdropFilter: 'blur(20px)',
+                                transition: 'all 0.3s ease',
+                                '&:hover': {
+                                    transform: 'translateY(-15px)'
+                                }
+                            }}
+                        >
+                            <Stack direction={'row'} gap={2}>
+                                <Avatar src={slide.image} alt={slide.name} />
+                                <Stack>
+                                    <Typography variant="h6">
+                                        {slide.name}
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        {slide.designation}
+                                    </Typography>
+                                </Stack>
+                            </Stack>
+                            <Stack>
+                                "{slide.content}"
+                            </Stack>
                         </Stack>
                     ))}
                 </Box>

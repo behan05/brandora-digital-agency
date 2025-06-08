@@ -31,6 +31,10 @@ const menuItem = [
     linktext: 'Contact',
     path: '/contact',
   },
+  {
+    linktext: 'Hire Me',
+    path: '/hire-me',
+  },
 ];
 
 function Navbar() {
@@ -69,7 +73,17 @@ function Navbar() {
 
       {/* Navigation links */}
       {!isSmallScreen && (
-        <Stack flexDirection={'row'} gap={3}>
+        <Stack
+          flexDirection={'row'}
+          gap={3}
+          p={2}
+          borderRadius={2}
+          sx={{
+            background: 'linear-gradient(125deg,rgba(246, 112, 37, 0.2) 50%,rgba(179, 85, 209, 0.1) 10%,rgba(176, 71, 237, 0.2))',
+            boxShadow: 'inset 0 0 0.2rem',
+            backdropFilter: 'blur(10px)'
+          }}
+        >
           {menuItem.map((item, index) => (
             <NavLink
               key={index}

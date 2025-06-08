@@ -8,7 +8,8 @@ function Cards({ icon, header, content }) {
             p: theme.spacing(2),
             boxShadow: 3,
             borderRadius: 2,
-            filter: 'drop-shadow(0 0 2rem #000)',
+            background: 'linear-gradient(125deg,rgba(179, 85, 31, 0.1),rgba(179, 85, 209, 0.1) ,rgba(176, 71, 237, 0.1))',
+            backdropFilter: 'blur(20px)',
             transition: 'transform 0.3s ease',
             '&:hover': {
                 transform: 'translateY(-15px)'
