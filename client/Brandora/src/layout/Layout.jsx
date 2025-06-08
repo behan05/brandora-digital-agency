@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import custumBgImage from '../assets/imgs/customBgImage.png'
 import Sidebar from "../components/Sidebar";
 import { Outlet } from "react-router-dom";
+import Footer from "../components/Footer";
 
 function Layout() {
   const theme = useTheme();
@@ -14,8 +15,6 @@ function Layout() {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        minHeight: '90vh',
-        backgroundColor: theme.palette.background.default,
         backgroundImage: `url(${custumBgImage})`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
@@ -42,7 +41,9 @@ function Layout() {
         <Sidebar />
       </Box>
 
-      <Box sx={{ px: contentPadding }}>Footer</Box>
+
+      <Footer />
+
     </Box>
   );
 }

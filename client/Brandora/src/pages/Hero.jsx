@@ -36,6 +36,8 @@ import GradeIcon from '@mui/icons-material/Grade';
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 
 function Hero() {
     const theme = useTheme();
@@ -175,6 +177,42 @@ function Hero() {
             numberOfProjects: '20 +',
         },
     ]
+
+    const faqs = [
+        {
+            question: "What is digital marketing?",
+            answer: "Digital marketing refers to all marketing efforts that use an electronic device or the internet. It leverages digital channels such as search engines, social media, email, websites, and mobile apps to connect with current and prospective customers. It allows businesses to reach a global audience in a cost-effective, measurable, and targeted way."
+        },
+        {
+            question: "Why is digital marketing important for my business?",
+            answer: "Digital marketing enables businesses of all sizes to reach their target audience at the right time and in the right place. It's more affordable than traditional marketing, provides measurable results, allows personalized campaigns, and offers the flexibility to adapt quickly. It helps businesses build brand awareness, drive traffic, generate leads, and boost conversions."
+        },
+        {
+            question: "How long does it take to see results from digital marketing?",
+            answer: "Results vary depending on the strategy used. SEO efforts may take 3–6 months to show noticeable improvement, while PPC (pay-per-click) campaigns can generate traffic almost immediately. Social media growth and brand trust typically require consistent effort over time. Patience, analytics, and continuous optimization are key to success."
+        },
+        {
+            question: "Is social media marketing necessary for my business?",
+            answer: "Yes, especially in today’s digital age. Social media marketing helps businesses humanize their brand, engage directly with their audience, and create community. It’s essential for customer support, running ads, influencer partnerships, and building long-term relationships. Each platform (e.g., Instagram, LinkedIn, Facebook) serves different goals and audiences."
+        },
+        {
+            question: "How much does digital marketing cost?",
+            answer: "Costs depend on your business goals, the channels you use, and whether you manage campaigns in-house or through an agency. Budgets can range from a few hundred to thousands of dollars per month. SEO and content marketing are often more cost-effective long-term, while PPC and influencer marketing may need higher upfront investment."
+        },
+        {
+            question: "What are the main types of digital marketing?",
+            answer: "The main types include Search Engine Optimization (SEO), Pay-Per-Click (PPC) advertising, Social Media Marketing, Content Marketing, Email Marketing, Affiliate Marketing, Influencer Marketing, and Mobile Marketing. Each has its own benefits, and a well-rounded digital strategy often includes multiple channels."
+        },
+        {
+            question: "Can I do digital marketing myself or should I hire an expert?",
+            answer: "You can start digital marketing yourself using online tools and resources, especially for small businesses with tight budgets. However, hiring a professional or agency may provide better results due to their expertise, strategy, and analytics skills. As your business grows, expert help can significantly improve ROI and save time."
+        },
+        {
+            question: "How do I measure the success of my digital marketing campaigns?",
+            answer: "Success is measured through Key Performance Indicators (KPIs) like website traffic, conversion rate, click-through rate (CTR), cost-per-click (CPC), return on investment (ROI), engagement rate, and customer acquisition cost. Tools like Google Analytics, Facebook Insights, and HubSpot help track and analyze campaign performance."
+        }
+    ];
+
 
     return (
         <Box flexDirection="column">
@@ -497,10 +535,6 @@ function Hero() {
                     textAlign="start"
                     my={6}
                     maxWidth={800}
-                    sx={{
-                        background: 'linear-gradient(125deg,rgba(179, 85, 31, 0.1),rgba(179, 85, 209, 0.1) 10%,rgba(176, 71, 237, 0.1))',
-                        backdropFilter: 'blur(20px)',
-                    }}
                 >
                     <Typography
                         variant="subtitle1"
@@ -1000,6 +1034,67 @@ function Hero() {
                     ))}
                 </Box>
             </Box>
+
+            {/* == FAQ Section == */}
+            <Box
+                component={'section'}
+                textAlign={'center'}
+                maxWidth={800}
+                mx={'auto'}
+                mb={10}
+            >
+                <Stack>
+                    <Typography
+                        variant='body1'
+                        mt={10}
+                        color='text.primary'
+                    >
+                        FAQ
+                    </Typography>
+
+                    <Typography
+                        variant={isSmallScreen ? 'h5' : 'h4'}
+                        component="h1"
+                        fontStyle="italic"
+                        fontWeight={900}
+                        color="text.secondary"
+                        letterSpacing={1}
+                        gutterBottom
+                    >
+                        What{' '}
+                        <Box component="span" color="text.primary" fontStyle="normal">
+                            are you confused about? <br /> here the answers.
+                        </Box>
+                    </Typography>
+                </Stack>
+                {faqs.map((faq, index) => (
+                    <Accordion
+                        key={index}
+                        disableGutters
+                        elevation={1}
+                        sx={{
+                            mb: 2,
+                            background: 'linear-gradient(125deg,rgba(246, 112, 37, 0.2) 50%,rgba(179, 85, 209, 0.1) 10%,rgba(176, 71, 237, 0.2))',
+                            boxShadow: 'inset 0 0 0.2rem',
+                            backdropFilter: 'blur(10px)'
+                        }}
+                    >
+                        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                            <Typography variant="subtitle1" fontWeight={600}>
+                                {faq.question}
+                            </Typography>
+                        </AccordionSummary>
+
+                        <AccordionDetails>
+                            <Typography color="text.secondary">{faq.answer}</Typography>
+                        </AccordionDetails>
+                    </Accordion>
+                ))}
+
+                <Typography mt={4} variant='h6' color='text.secondary'>Still Have Questions?</Typography>
+                <CustomButton redirectedTo={'/contact'} sx={{ mt: 2 }}>Contact Us</CustomButton>
+            </Box>
+
         </Box>
     );
 }
