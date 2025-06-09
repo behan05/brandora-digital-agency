@@ -20,7 +20,7 @@ const menuItem = [
     path: '/',
   },
   {
-    linktext: 'About',
+    linktext: 'About Us',
     path: '/about',
   },
   {

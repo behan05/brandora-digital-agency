@@ -55,7 +55,7 @@ function Sidebar() {
         </Stack>
         {[
           { text: 'Home', path: '/' },
-          { text: 'About', path: '/about' },
+          { text: 'About Us', path: '/about' },
           { text: 'Services', path: '/services' },
           { text: 'Hire Me', path: '/hire-me' },
           { text: 'Fast Query ?', path: '/contact' },

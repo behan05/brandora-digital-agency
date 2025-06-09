@@ -30,7 +30,6 @@ import process2 from "../assets/imgs/process2.jpg";
 import process3 from "../assets/imgs/process3.jpg";
 
 
-
 import LaunchIcon from '@mui/icons-material/Launch';
 import GradeIcon from '@mui/icons-material/Grade';
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
@@ -502,7 +501,6 @@ function Hero() {
                         p: theme.spacing(2),
                         boxShadow: 2,
                         borderRadius: 2,
-                        filter: 'drop-shadow(0 0 2rem #000)',
                         background: 'linear-gradient(125deg,rgba(92, 52, 29, 0.2) 0%,rgba(131, 98, 26, 0.2) 50%,rgb(97, 39, 131) 100%)',
                     }}>
                         <Typography
