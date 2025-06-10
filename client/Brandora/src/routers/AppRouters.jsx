@@ -3,7 +3,7 @@ import Layout from '../layout/Layout';
 import Hero from '../pages/Hero';
 import About from '../pages/About';
 import Services from '../pages/Services';
-import Contact from '../pages/Contact';
+import Contact from '../components/Contact';
 import HireMe from '../pages/HireMe';
 
 export const routers = createBrowserRouter([

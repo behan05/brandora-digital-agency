@@ -1,6 +1,6 @@
-import { Box, Stack, useMediaQuery, useTheme } from "../mui/muiComponents";
+import { Box, useMediaQuery, useTheme } from "../mui/muiComponents";
 import Navbar from '../components/Navbar';
-import custumBgImage from '../assets/imgs/customBgImage.png'
+import custumBgImage from '../assets/imgs/customBgImage.png';
 import Sidebar from "../components/Sidebar";
 import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer";

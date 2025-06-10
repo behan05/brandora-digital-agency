@@ -10,6 +10,7 @@ import logo2 from "../assets/companyLogo/logo-2.png"
 import logo3 from "../assets/companyLogo/logo-3.png"
 
 import custumBgImage from '../assets/imgs/customBgImage.png'
+import Contact from '../components/Contact';
 
 function About() {
     const theme = useTheme();
@@ -365,8 +366,11 @@ function About() {
                     variant='h5'
                     textAlign={'center'}
                     letterSpacing={1}
+                    fontWeight={900}
+                    color="text.secondary"
                     gutterBottom
-                    mt={10}>
+                    mt={10}
+                >
                     Meet the brands that we rely on.
                 </Typography>
                 <Stack
@@ -422,6 +426,23 @@ function About() {
                         </Stack>
                     ))}
                 </Stack>
+            </Box>
+
+            {/* Third Section Contect Form  */}
+            <Box>
+                <Typography
+                    variant={isSmallScreen ? 'h5' : 'h5'}
+                    component="h1"
+                    fontWeight={900}
+                    color="text.secondary"
+                    letterSpacing={1}
+                    gutterBottom
+                    textAlign={'center'}
+                >
+                    What{' '}are you confused about? <br /> here the answers.
+                </Typography>
+
+                <Contact />
             </Box>
         </Box>
     );
