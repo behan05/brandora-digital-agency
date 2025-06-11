@@ -4,6 +4,12 @@
 
 ---
 
+## 🌐 Live Preview
+
+🔗 [Visit Live Portfolio](https://your-live-site-url.com) <!-- comming soon -->
+
+---
+
 ## ✨ Features
 
 - **Home** – Welcome section, intro, CTA
