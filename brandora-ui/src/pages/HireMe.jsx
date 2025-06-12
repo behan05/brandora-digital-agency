@@ -54,31 +54,47 @@ function HireMe() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Convert services object into a string list
+        const selectedServices = Object.entries(formData.services)
+            .filter(([_, value]) => value)
+            .map(([key]) => key)
+            .join(', '); // "website, marketing"
+
+        const payload = {
+            fullName: formData.fullName,
+            email: formData.email,
+            phone: formData.phone,
+            companyOrProject: formData.company,
+            budget: formData.budget,
+            serviceRequired: selectedServices,
+            message: formData.message
+        };
+
         try {
-            const res = await axiosClient.post('/hireme', formData);
+            const res = await axiosClient.post('/hireme', payload);
             alert(`Hey ${formData.fullName}, ${res.data.message}`);
 
-            // reset
-            setFormData(
-                {
-                    fullName: '',
-                    email: '',
-                    phone: '',
-                    company: '',
-                    budget: '',
-                    message: '',
-                    services: {
-                        website: false,
-                        marketing: false,
-                        seo: false,
-                        branding: false,
-                    },
-                }
-            )
+            // Reset form
+            setFormData({
+                fullName: '',
+                email: '',
+                phone: '',
+                company: '',
+                budget: '',
+                message: '',
+                services: {
+                    website: false,
+                    marketing: false,
+                    seo: false,
+                    branding: false,
+                },
+            });
         } catch (error) {
             alert('Something went wrong. Please try again. ' + error.message);
         }
     };
+
 
     return (
         <Box sx={{ maxWidth: 800, mx: 'auto', px: 2, py: 6 }}>
