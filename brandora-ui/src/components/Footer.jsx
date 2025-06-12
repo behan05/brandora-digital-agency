@@ -10,7 +10,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-
+import axiosClient from '../api/axiosClient'
 
 function Footer() {
   const theme = useTheme();
@@ -22,9 +22,18 @@ function Footer() {
     setEmail(e.target.value);
   };
 
-  const handleSubmit = () => {
-    // Call API here to send Email.
-    setEmail(''); // clear prev email
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Email submitted:", email);
+    try {
+      const res = await axiosClient.post('/api/users/newsLetter', { email });
+      alert(`${res.data.message}`);
+
+      setEmail(''); // reset
+
+    } catch (error) {
+      alert('Something went wrong. Please try again. ' + error.message);
+    }
   };
 
   const socialIcons = [FacebookIcon, InstagramIcon, TwitterIcon, LinkedInIcon];
@@ -64,6 +73,7 @@ function Footer() {
                 label="Enter Your Email"
                 value={email}
                 name="email"
+                required
                 onChange={(e) => handelInput(e)}
                 fullWidth
               />

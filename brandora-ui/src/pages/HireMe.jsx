@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axiosClient from '../api/axiosClient'
 import {
     Box,
     Button,
@@ -51,10 +52,32 @@ function HireMe() {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Submitted:', formData);
-        // API call here
+        try {
+            const res = await axiosClient.post('/api/users/hireme', formData);
+            alert(`Hey ${formData.fullName}, ${res.data.message}`);
+
+            // reset
+            setFormData(
+                {
+                    fullName: '',
+                    email: '',
+                    phone: '',
+                    company: '',
+                    budget: '',
+                    message: '',
+                    services: {
+                        website: false,
+                        marketing: false,
+                        seo: false,
+                        branding: false,
+                    },
+                }
+            )
+        } catch (error) {
+            alert('Something went wrong. Please try again. ' + error.message);
+        }
     };
 
     return (

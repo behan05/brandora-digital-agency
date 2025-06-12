@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import axiosClient from '../api/axiosClient';
+
 import {
     Box,
     Button,
@@ -26,18 +28,23 @@ function Contact() {
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('Contact form submitted:', formData);
-        // TODO: Add API integration here
-        // Reset
-        setFormData({
-            fullName: '',
-            email: '',
-            phone: '',
-            subject: '',
-            message: '',
-        });
+        try {
+            const res = await axiosClient.post('/api/users/contact', formData);
+            alert(`Hey ${formData.fullName}, ${res.data.message}`);
+
+            // Reset
+            setFormData({
+                fullName: '',
+                email: '',
+                phone: '',
+                subject: '',
+                message: '',
+            });
+        } catch (error) {
+            alert('Something went wrong. Please try again. ' + error.message);
+        }
     };
 
     return (
