@@ -9,13 +9,13 @@ exports.hireme = async (req, res) => {
       companyOrProject,
       budget,
       serviceRequired,
-      message } = req.body;
+      message
+    } = req.body;
 
     if (!fullName || !email) {
       return res.status(400).json({ error: 'Required fields missing' });
     }
 
-    // create a new entry.
     const newRecruiter = new HireMe({
       fullName,
       email,
@@ -26,9 +26,10 @@ exports.hireme = async (req, res) => {
       message
     });
 
-    newRecruiter.save();
-    res.status(200).json({ message: 'Message sent successfully!' })
+    await newRecruiter.save();
+    res.status(200).json({ message: 'Message sent successfully!' });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
