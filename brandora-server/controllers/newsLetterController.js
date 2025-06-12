@@ -10,7 +10,7 @@ async function newsletter(req, res) {
 
         // create and save contact entry
         new NewsLatter({ email }).save();
-        res.status(200).json({ message: 'newsLetter form submitted successfully' })
+        res.status(200).json({ message: 'Thank you for your Subscription!' })
     } catch (error) {
         res.status(500).json({ error: 'Internal server error' });
     }

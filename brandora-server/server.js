@@ -5,11 +5,12 @@ const hireRoutes = require('./routes/hireRoutes');
 require('dotenv').config();
 const connectDB = require('./config/dbConfig');
 const newsletterRoutes = require('./routes/newsLetterRouter');
-
+const cors = require('cors');
 
 // Connect DB
 connectDB();
 
+app.use(cors());
 app.use(express.json());
 
 // basePath

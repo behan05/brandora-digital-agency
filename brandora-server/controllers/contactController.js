@@ -18,7 +18,7 @@ exports.contact = async (req, res) => {
     });
     newContact.save();
 
-    res.status(200).json({ message: 'Contact form submitted successfully' })
+    res.status(200).json({ message: 'Message sent successfully!' })
   } catch (error) {
     res.status(500).json({ error: 'Internal server error' });
   }
