@@ -24,9 +24,8 @@ function Footer() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Email submitted:", email);
     try {
-      const res = await axiosClient.post('/newsLetter', { email });
+      const res = await axiosClient.post('https://brandora-server.onrender.com/api/users/newsLetter', { email });
       alert(`${res.data.message}`);
 
       setEmail(''); // reset

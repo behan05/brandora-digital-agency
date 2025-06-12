@@ -72,7 +72,7 @@ function HireMe() {
         };
 
         try {
-            const res = await axiosClient.post('/hireme', payload);
+            const res = await axiosClient.post('https://brandora-server.onrender.com/api/users/hireme', payload);
             alert(`Hey ${formData.fullName}, ${res.data.message}`);
 
             // Reset form
