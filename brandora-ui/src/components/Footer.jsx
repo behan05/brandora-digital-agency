@@ -26,7 +26,7 @@ function Footer() {
     e.preventDefault();
     console.log("Email submitted:", email);
     try {
-      const res = await axiosClient.post('/api/users/newsLetter', { email });
+      const res = await axiosClient.post('/newsLetter', { email });
       alert(`${res.data.message}`);
 
       setEmail(''); // reset

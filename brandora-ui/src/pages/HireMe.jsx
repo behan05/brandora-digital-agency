@@ -55,7 +55,7 @@ function HireMe() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axiosClient.post('/api/users/hireme', formData);
+            const res = await axiosClient.post('/hireme', formData);
             alert(`Hey ${formData.fullName}, ${res.data.message}`);
 
             // reset

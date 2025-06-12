@@ -31,7 +31,7 @@ function Contact() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axiosClient.post('/api/users/contact', formData);
+            const res = await axiosClient.post('/contact', formData);
             alert(`Hey ${formData.fullName}, ${res.data.message}`);
 
             // Reset
