@@ -13,6 +13,11 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
+// this is for render cloud server.
+app.get('/', (req, res) => {
+    res.send('Backend is running ✅');
+});
+
 // basePath
 app.use('/api/users', contactRoutes);
 app.use('/api/users', hireRoutes);
