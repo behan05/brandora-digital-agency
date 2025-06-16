@@ -47,6 +47,22 @@ function Contact() {
         }
     };
 
+    const inputCentralizeStyle = {
+        '& .MuiOutlinedInput-root': {
+            borderRadius: 1,
+            '& fieldset': {
+                border: `1px solid ${theme.palette.text.secondary}`, // Normal border
+            },
+            '&:hover fieldset': {
+                borderColor: theme.palette.text.primary, // Hover border
+            },
+            '&.Mui-focused fieldset': {
+                borderColor: theme.palette.text.primary, // Focus border
+                borderWidth: '1px', // match your normal border
+            },
+        },
+    };
+
     return (
         <Box sx={{ maxWidth: 800, mx: 'auto', px: 2, py: 6 }}>
             <Typography variant="h3" gutterBottom textAlign="center">
@@ -65,7 +81,10 @@ function Contact() {
                         required
                         value={formData.fullName}
                         onChange={handleChange}
+                        variant="outlined"
+                        sx={inputCentralizeStyle}
                     />
+
                     <Stack direction={isSmall ? 'column' : 'row'} spacing={2}>
                         <TextField
                             name="email"
@@ -75,6 +94,7 @@ function Contact() {
                             value={formData.email}
                             onChange={handleChange}
                             type="email"
+                            sx={inputCentralizeStyle}
                         />
                         <TextField
                             name="phone"
@@ -83,6 +103,7 @@ function Contact() {
                             value={formData.phone}
                             onChange={handleChange}
                             type="tel"
+                            sx={inputCentralizeStyle}
                         />
                     </Stack>
 
@@ -93,6 +114,7 @@ function Contact() {
                         required
                         value={formData.subject}
                         onChange={handleChange}
+                        sx={inputCentralizeStyle}
                     />
 
                     <TextField
@@ -104,13 +126,19 @@ function Contact() {
                         rows={4}
                         value={formData.message}
                         onChange={handleChange}
+                        sx={inputCentralizeStyle}
                     />
 
                     <Button
                         type="submit"
-                        variant="contained"
+                        variant="outlined"
                         size="large"
-                        sx={{ alignSelf: 'flex-start', px: 4, borderRadius: 2 }}
+                        sx={{
+                            alignSelf: 'flex-start',
+                            px: 4,
+                            color: 'text.secondary',
+                            border: '1px dotted',
+                        }}
                     >
                         Send Message
                     </Button>

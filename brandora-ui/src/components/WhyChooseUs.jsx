@@ -11,8 +11,8 @@ function WhyChooseUs() {
 
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
-    const isMd = useMediaQuery(theme.breakpoints.down('md'));
     const isLg = useMediaQuery(theme.breakpoints.down('lg'));
+
     return (
         <Box component={'section'}>
             <Stack textAlign="start" my={6} maxWidth={900}>
@@ -29,7 +29,7 @@ function WhyChooseUs() {
                     variant={isSmallScreen ? 'h5' : 'h4'}
                     component="h1"
                     fontStyle="italic"
-                    fontWeight={900}
+                    fontWeight={700}
                     color="text.secondary"
                     letterSpacing={1}
                     gutterBottom
@@ -96,7 +96,7 @@ function WhyChooseUs() {
                             boxShadow={3}
                             sx={{
                                 background: 'linear-gradient(125deg,rgba(179, 85, 31, 0.1),rgba(179, 85, 209, 0.1) 10%,rgba(176, 71, 237, 0.1))',
-                                backdropFilter: 'blur(20px)',
+                                backdropFilter: 'blur(4px)',
                                 transition: 'all 0.3s ease',
 
                                 '&:hover': {
@@ -108,16 +108,16 @@ function WhyChooseUs() {
                                 {card.icon}
                             </Stack>
                             <Typography
-                                color='text.secondary'
+                                color='text.primary'
                                 variant='subtitle1'
                                 letterSpacing={1}
                                 gutterBottom
-                                fontWeight={900}
+                                fontWeight={600}
                             >
                                 {card.title}
                             </Typography>
                             <Typography
-                                color='text.primary'
+                                color='text.secondary'
                                 variant='body1'
                                 letterSpacing={1}
                                 gutterBottom

@@ -1,5 +1,4 @@
 const palette = {
-  mode: 'light',
 
   primary: {
     main: '#1976d2',         // Blue
@@ -49,8 +48,8 @@ const palette = {
   },
 
   text: {
-    primary: '#1a1a1a',
-    secondary: '#4f4f4f',
+    primary: '#ffffff',
+    secondary: '#D5BEBC',
     disabled: '#9e9e9e',
   },
 

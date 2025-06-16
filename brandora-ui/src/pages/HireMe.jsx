@@ -17,6 +17,7 @@ import {
     useMediaQuery,
 } from '@mui/material';
 
+
 function HireMe() {
     const [formData, setFormData] = useState({
         fullName: '',
@@ -95,6 +96,21 @@ function HireMe() {
         }
     };
 
+    const inputCentralizeStyle = {
+        '& .MuiOutlinedInput-root': {
+            borderRadius: 1,
+            '& fieldset': {
+                border: `1px solid ${theme.palette.text.secondary}`, // Normal border
+            },
+            '&:hover fieldset': {
+                borderColor: theme.palette.text.primary, // Hover border
+            },
+            '&.Mui-focused fieldset': {
+                borderColor: theme.palette.text.primary, // Focus border
+                borderWidth: '1px', // match your normal border
+            },
+        },
+    }
 
     return (
         <Box sx={{ maxWidth: 800, mx: 'auto', px: 2, py: 6 }}>
@@ -114,6 +130,7 @@ function HireMe() {
                         required
                         value={formData.fullName}
                         onChange={handleChange}
+                        sx={inputCentralizeStyle}
                     />
                     <Stack direction={isSmall ? 'column' : 'row'} spacing={2}>
                         <TextField
@@ -124,6 +141,7 @@ function HireMe() {
                             value={formData.email}
                             onChange={handleChange}
                             type="email"
+                            sx={inputCentralizeStyle}
                         />
                         <TextField
                             name="phone"
@@ -132,6 +150,7 @@ function HireMe() {
                             value={formData.phone}
                             onChange={handleChange}
                             type="tel"
+                            sx={inputCentralizeStyle}
                         />
                     </Stack>
                     <TextField
@@ -140,27 +159,60 @@ function HireMe() {
                         fullWidth
                         value={formData.company}
                         onChange={handleChange}
+                        sx={inputCentralizeStyle}
                     />
 
-                    <FormControl fullWidth>
+                    <FormControl fullWidth sx={inputCentralizeStyle}>
                         <InputLabel>Budget</InputLabel>
                         <Select
                             name="budget"
                             value={formData.budget}
                             onChange={handleChange}
                             required
+                            MenuProps={{
+                                PaperProps: {
+                                    sx: {
+                                        backgroundColor: 'transparent',  // 💥 Removes the white box
+                                        boxShadow: 'none',               // Optional: removes default shadow
+                                        backdropFilter: 'blur(20px)',     // Optional: nice glass effect
+                                    },
+                                },
+                            }}
                         >
-                            <MenuItem value="">Select your budget</MenuItem>
-                            <MenuItem value="below_500">Below $500</MenuItem>
-                            <MenuItem value="500_1000">$500 - $1000</MenuItem>
-                            <MenuItem value="1000_5000">$1000 - $5000</MenuItem>
-                            <MenuItem value="above_5000">Above $5000</MenuItem>
+                            {[
+                                { value: '', label: 'Select your budget' },
+                                { value: 'below_500', label: 'Below $500' },
+                                { value: '500_1000', label: '$500 - $1000' },
+                                { value: '1000_5000', label: '$1000 - $5000' },
+                                { value: 'above_5000', label: 'Above $5000' },
+                            ].map(({ value, label }) => (
+                                <MenuItem
+                                    key={value}
+                                    value={value}
+                                    sx={{
+                                        color: 'text.secondary',
+                                        backgroundColor: 'transparent',
+                                        '&:hover': {
+                                            backgroundColor: 'transparent',
+                                        },
+                                        '&.Mui-selected': {
+                                            backgroundColor: 'transparent',
+                                        },
+                                        '&.Mui-selected:hover': {
+                                            backgroundColor: 'transparent',
+                                        },
+                                    }}
+                                >
+                                    {label}
+                                </MenuItem>
+                            ))}
                         </Select>
                     </FormControl>
 
-                    <FormControl component="fieldset">
+
+                    <FormControl component="fieldset" >
                         <Typography variant="subtitle1" mb={1}>Services Required</Typography>
-                        <FormGroup row>
+                        <FormGroup row >
                             <FormControlLabel
                                 control={<Checkbox checked={formData.services.website} onChange={handleServiceChange} name="website" />}
                                 label="Website"
@@ -188,13 +240,19 @@ function HireMe() {
                         rows={4}
                         value={formData.message}
                         onChange={handleChange}
+                        sx={inputCentralizeStyle}
                     />
 
                     <Button
                         type="submit"
-                        variant="contained"
+                        variant="outlined"
                         size="large"
-                        sx={{ alignSelf: 'flex-start', px: 4, borderRadius: 2 }}
+                        sx={{
+                            alignSelf: 'flex-start',
+                            px: 4,
+                            color: 'text.secondary',
+                            border: '1px dotted',
+                        }}
                     >
                         Submit
                     </Button>

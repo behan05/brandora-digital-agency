@@ -81,7 +81,7 @@ function Navbar() {
           sx={{
             background: 'linear-gradient(125deg,rgba(246, 112, 37, 0.2) 50%,rgba(179, 85, 209, 0.1) 10%,rgba(176, 71, 237, 0.2))',
             boxShadow: 'inset 0 0 0.2rem',
-            backdropFilter: 'blur(10px)'
+            backdropFilter: 'blur(10px)',
           }}
         >
           {menuItem.map((item, index) => (
@@ -94,7 +94,12 @@ function Navbar() {
                 color: isActive ? theme.palette.primary.main : theme.palette.text.primary,
               })}
             >
-              <Typography variant='body1'>{item.linktext}</Typography>
+              <Typography variant='body1' sx={{
+                fontFamily: '"Edu SA Hand", cursive',
+                fontOpticalSizing: 'auto'
+              }}>
+                {item.linktext}
+              </Typography>
             </NavLink>
           ))}
         </Stack>

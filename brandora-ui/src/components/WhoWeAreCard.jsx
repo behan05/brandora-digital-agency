@@ -1,25 +1,24 @@
 import { Divider } from '@mui/material';
-import { Box, Stack, Typography, useTheme } from '../mui/muiComponents';
-import React from 'react'
+import { Box, Stack, Typography } from '../mui/muiComponents';
 
 function WhoWeAreCard({ key, title, content, numberOfProjects }) {
-    const theme = useTheme();
     return (
         <Box key={key} sx={{
             padding: 2,
-            borderRadius: 2,
+            borderRadius: 1,
             boxShadow: 3,
-            background: 'linear-gradient(155deg,rgb(67, 39, 131) 0%,rgba(131, 98, 26, 0.2) 50%,rgba(35, 9, 78, 0.2) 100%)',
+            background: 'linear-gradient(155deg,rgba(67, 39, 131, 0.2) 0%,rgba(131, 98, 26, 0.1) 50%,rgba(35, 9, 78, 0.1) 100%)',
+            backdropFilter: 'blur(4px)',
             transition: 'all 0.3s ease',
             '&:hover': {
                 transform: 'translateX(10px)',
-                bgcolor: theme.palette.background.paper,
             }
         }}>
             <Typography
                 variant='subtitle1'
-                color='text.secondary'
+                color='text.primary'
                 gutterBottom
+                fontWeight={600}
             >
                 {title}
             </Typography>
@@ -27,6 +26,9 @@ function WhoWeAreCard({ key, title, content, numberOfProjects }) {
                 variant='body1'
                 gutterBottom
                 letterSpacing={1}
+                lineHeight={2}
+                color='text.secondary'
+                textAlign={'justify'}
             >
                 {content}
             </Typography>

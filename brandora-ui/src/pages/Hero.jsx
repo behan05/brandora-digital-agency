@@ -251,6 +251,7 @@ function Hero() {
                         variant={isSmallScreen ? 'h4' : "h3"}
                         color="text.secondary"
                         fontWeight="bold"
+                        lineHeight={1.5}
                         sx={{ fontStyle: 'italic' }}
                     >
                         Solutions
@@ -259,6 +260,7 @@ function Hero() {
                     <Typography
                         variant={isSmallScreen ? 'h4' : "h3"}
                         fontWeight="bold"
+                        lineHeight={1.5}
                         color={theme.palette.text.primary}
                     >
                         For Your
@@ -289,14 +291,15 @@ function Hero() {
                         variant="body1"
                         color="text.secondary"
                         maxWidth="md"
-                        letterSpacing={1.5}
+                        letterSpacing={1.6}
                         gutterBottom
+                        textAlign={'justify'}
                     >
-                        Experience the transformative power of our expert marketing strategies as we partner with you to elevate your brand's digital presence. From data-driven campaigns to cutting-edge digital solutions, we tailor every strategy to meet your unique business goals. Let us take your brand to new heights online — where visibility, engagement, and growth converge.
+                        Experience the transformative power of our expert marketing strategies as we partner with you to elevate your brand's digital presence. From data-driven campaigns to cutting-edge digital solutions, we tailor every strategy to meet your unique business goals. Let us take your brand to new heights online where visibility, engagement, and growth converge.
                     </Typography>
 
                     <CustomButton
-                        redirectedTo="support"
+                        redirectedTo="/hire-me"
                         sx={{
                             maxWidth: '260px',
                             fontWeight: 600,
@@ -461,7 +464,7 @@ function Hero() {
                     </Typography>
                     <Typography
                         variant={isSmallScreen ? 'h5' : "h4"}
-                        fontWeight={900}
+                        fontWeight={700}
                         component="h1"
                         color={theme.palette.text.primary}
                     >
@@ -543,7 +546,7 @@ function Hero() {
                         variant={isSmallScreen ? 'h5' : 'h4'}
                         component="h1"
                         fontStyle="italic"
-                        fontWeight={900}
+                        fontWeight={700}
                         color="text.secondary"
                         letterSpacing={1}
                         gutterBottom
@@ -596,20 +599,18 @@ function Hero() {
                             releaseDate: '06/04/2025',
                         },
                     ].map((project, index) => (
-                        <Stack key={index} p={2}>
+                        <Stack key={index} p={2} gap={1}>
                             <Typography
-                                color='text.secondary'
+                                color='text.primary'
                                 variant='subtitle1'
-                                letterSpacing={2}
-                                fontWeight={900}
+                                fontWeight={700}
                                 component={'span'}
                             >
                                 Project Name:{' '}
                                 <Typography
                                     gutterBottom
-                                    color='text.primary'
+                                    color='text.secondary'
                                     variant='body1'
-                                    letterSpacing={1}
                                     fontWeight={400}
                                     component={'span'}
                                 >
@@ -618,18 +619,16 @@ function Hero() {
                             </Typography>
 
                             <Typography
-                                color='text.secondary'
+                                color='text.primary'
                                 variant='subtitle1'
-                                letterSpacing={2}
-                                fontWeight={900}
+                                fontWeight={700}
                                 component={'span'}
                             >
                                 Description:{' '}
                                 <Typography
                                     gutterBottom
-                                    color='text.primary'
+                                    color='text.secondary'
                                     variant='body1'
-                                    letterSpacing={1}
                                     fontWeight={400}
                                     component={'span'}
                                 >
@@ -640,16 +639,14 @@ function Hero() {
                             <Typography
                                 color='text.primary'
                                 variant='subtitle1'
-                                letterSpacing={2}
-                                fontWeight={900}
+                                fontWeight={700}
                                 component={'span'}
                             >
                                 Category: {' '}
                                 <Typography
                                     gutterBottom
-                                    color='text.primary'
+                                    color='text.secondary'
                                     variant='body1'
-                                    letterSpacing={1}
                                     component={'span'}
                                     fontWeight={400}
                                 >
@@ -660,8 +657,7 @@ function Hero() {
                             <Typography
                                 color='text.primary'
                                 variant='subtitle1'
-                                letterSpacing={2}
-                                fontWeight={900}
+                                fontWeight={700}
                                 component={'span'}
                             >
                                 Release Date: {' '}
@@ -669,7 +665,6 @@ function Hero() {
                                     gutterBottom
                                     color='text.primary'
                                     variant='body1'
-                                    letterSpacing={1}
                                     component={'span'}
                                     fontWeight={400}
                                 >
@@ -717,7 +712,7 @@ function Hero() {
                         variant={isSmallScreen ? 'h5' : 'h4'}
                         component="h1"
                         fontStyle="italic"
-                        fontWeight={900}
+                        fontWeight={700}
                         color="text.secondary"
                         letterSpacing={1}
                         gutterBottom
@@ -765,7 +760,7 @@ function Hero() {
                             p={2}
                             sx={{
                                 background: 'linear-gradient(125deg,rgba(179, 85, 31, 0.1),rgba(179, 85, 209, 0.1) ,rgba(176, 71, 237, 0.1))',
-                                backdropFilter: 'blur(20px)',
+                                backdropFilter: 'blur(4px)',
 
                             }}
                         >
@@ -779,8 +774,8 @@ function Hero() {
                             </Typography>
 
                             <Typography
-                                color='text.secondary'
-                                fontWeight={900}
+                                color='text.primary'
+                                fontWeight={600}
                                 gutterBottom
                                 letterSpacing={1}
                                 variant='subtitle1'
@@ -789,7 +784,7 @@ function Hero() {
                             </Typography>
 
                             <Typography
-                                color='text.primary'
+                                color='text.secondary'
                                 fontWeight={400}
                                 gutterBottom
                                 letterSpacing={1}
@@ -840,7 +835,7 @@ function Hero() {
                         gutterBottom
                     >
                         Review{' '}
-                        <Box component="span" color="text.primary" fontStyle="normal">
+                        <Box component="span" color="text.primary" sx={{fontWeight: 700}} fontStyle="normal">
                             From Clients
                         </Box>
                     </Typography>
@@ -892,12 +887,8 @@ function Hero() {
 
             {/* == FAQ Section == */}
             <Stack sx={{
-                backgroundImage: `url(${custumBgImage})`,
-                backgroundSize: 'cover',
-                backgroundRepeat: 'no-repeat',
-                objectFit: 'cover',
                 borderRadius: 2,
-                mt: 10,
+                mt: 6,
             }}>
                 <Box
                     component={'section'}
@@ -918,7 +909,7 @@ function Hero() {
                             variant={isSmallScreen ? 'h5' : 'h4'}
                             component="h1"
                             fontStyle="italic"
-                            fontWeight={900}
+                            fontWeight={700}
                             color="text.secondary"
                             letterSpacing={1}
                             gutterBottom
@@ -935,7 +926,7 @@ function Hero() {
                             disableGutters
                             elevation={1}
                             sx={{
-                                mb: 2,
+                                my: 2,
                                 background: 'linear-gradient(125deg,rgba(246, 112, 37, 0.2) 50%,rgba(179, 85, 209, 0.1) 10%,rgba(176, 71, 237, 0.2))',
                                 boxShadow: 'inset 0 0 0.2rem',
                                 backdropFilter: 'blur(10px)'

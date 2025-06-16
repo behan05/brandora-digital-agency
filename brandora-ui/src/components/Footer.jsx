@@ -75,8 +75,33 @@ function Footer() {
                 required
                 onChange={(e) => handelInput(e)}
                 fullWidth
+                sx={{
+                  '& .MuiOutlinedInput-root': {
+                    borderRadius: 1,
+                    '& fieldset': {
+                      border: `1px solid ${theme.palette.text.secondary}`, // Normal border
+                    },
+                    '&:hover fieldset': {
+                      borderColor: theme.palette.text.primary, // Hover border
+                    },
+                    '&.Mui-focused fieldset': {
+                      borderColor: theme.palette.text.primary, // Focus border
+                      borderWidth: '1px', // match your normal border
+                    },
+                  },
+                }}
               />
-              <Button type="submit" variant="contained" sx={{ p: 1, px: 3, borderRadius: 6 }}>
+              <Button
+                type="submit"
+                variant="outlined"
+                sx={{
+                  p: 1,
+                  px: 3,
+                  alignSelf: 'flex-center',
+                  px: 4,
+                  color: 'text.secondary',
+                  border: '1px dotted',
+                }}>
                 Subscribe
               </Button>
             </Stack>
@@ -128,7 +153,7 @@ function Footer() {
             <Stack direction="row" alignItems="center" gap={1}>
               <LocationOnIcon color={'text.success'} />
               <Typography variant='subtitle1' gutterBottom color='text.secondary'>
-                Zirkhpur Near Bus Stand<br />{' '}Pubjab. India (Bharat)
+                Zirakhpur Near Bus Stand<br />{' '}Pubjab. India (Undivided India)
               </Typography>
             </Stack>
             <Stack direction="row" alignItems="center" gap={1}>

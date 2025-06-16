@@ -14,6 +14,14 @@ import { toggleMenu } from '../redux/slices/menu';
 import { useSelector, useDispatch } from "react-redux";
 import CloseIcon from '@mui/icons-material/Close';
 
+
+import HomeIcon from '@mui/icons-material/Home';
+import InfoIcon from '@mui/icons-material/Info';
+import BuildIcon from '@mui/icons-material/Build';
+import ContactMailIcon from '@mui/icons-material/ContactMail';
+import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
+
+
 function Sidebar() {
   const dispatch = useDispatch();
   const open = useSelector((state) => state.menu.isMenuOpen);
@@ -32,8 +40,8 @@ function Sidebar() {
       PaperProps={{
         sx: {
           width: 250,
-          backgroundColor: 'rgba(228, 221, 221, 0.6)',
-          backdropFilter: 'blur(4px)',
+          backgroundColor: 'transparent',
+          backdropFilter: 'blur(41px)',
           p: 2,
         }
       }}
@@ -54,12 +62,12 @@ function Sidebar() {
           </Tooltip>
         </Stack>
         {[
-          { text: 'Home', path: '/' },
-          { text: 'About Us', path: '/about' },
-          { text: 'Services', path: '/services' },
-          { text: 'Hire Me', path: '/hire-me' },
-          { text: 'Fast Query ?', path: '/contact' },
-        ].map(({ text, path }) => (
+          { text: 'Home', path: '/', icon: <HomeIcon sx={{ mr: 1 }} /> },
+          { text: 'About Us', path: '/about', icon: <InfoIcon sx={{ mr: 1 }} /> },
+          { text: 'Services', path: '/services', icon: <BuildIcon sx={{ mr: 1 }} /> },
+          { text: 'Hire Me', path: '/hire-me', icon: <ContactMailIcon sx={{ mr: 1 }} /> },
+          { text: 'Fast Query ?', path: '/contact', icon: <WorkOutlineIcon sx={{ mr: 1 }} /> },
+        ].map(({ text, path, icon }) => (
           <ListItem
             button
             key={text}
@@ -69,14 +77,17 @@ function Sidebar() {
             sx={{
               borderRadius: 1,
               mb: 1,
-              backgroundColor: 'rgba(0, 0, 0, 0.6)',
+              backgroundColor: 'transparent',
+              border: `1px solid ${theme.palette.warning.main}`,
               backdropFilter: 'blur(4px)',
+              color: theme.palette.text.primary,
               '&:hover': {
                 bgcolor: theme.palette.primary.light,
                 color: theme.palette.primary.contrastText,
               }
             }}
           >
+            {icon}
             <ListItemText
               primary={text}
               primaryTypographyProps={{
