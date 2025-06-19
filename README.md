@@ -6,7 +6,7 @@
 
 ## 🌐 Live Preview
 
-🔗 [Visit Live Portfolio](https://brandora-jade.vercel.app/) <!-- comming soon -->
+🔗 [Visit Live Portfolio](https://brandora-agency.vercel.app/) <!-- comming soon -->
 
 ---
 
