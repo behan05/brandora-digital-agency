@@ -9,7 +9,8 @@ import logo1 from "../assets/companyLogo/logo-1.png"
 import logo2 from "../assets/companyLogo/logo-2.png"
 import logo3 from "../assets/companyLogo/logo-3.png"
 
-import custumBgImage from '../assets/imgs/customBgImage.png'
+import VerifiedIcon from '@mui/icons-material/Verified';
+
 import Contact from '../components/Contact';
 
 function About() {
@@ -361,46 +362,57 @@ function About() {
 
 
             {/* Second Section Meeting Brand */}
-            <Box>
-                <Typography
-                    variant='h5'
-                    textAlign={'center'}
-                    letterSpacing={1}
-                    fontWeight={900}
-                    color="text.secondary"
-                    gutterBottom
-                    mt={10}
-                >
-                    Meet the brands that we rely on.
-                </Typography>
+            <Box mt={7}>
+                {/* == Trusted Brands Section == */}
+                <Stack textAlign="start" spacing={2} mb={4}>
+                    <Stack direction="row" alignItems="center" spacing={1}>
+                        <VerifiedIcon color="primary" />
+                        <Typography
+                            variant="subtitle1"
+                            color="text.secondary"
+                            letterSpacing={2}
+                            fontWeight={700}
+                        >
+                            TRUSTED BRANDS
+                        </Typography>
+                    </Stack>
+                    <Typography
+                        variant="h5"
+                        fontWeight={700}
+                        color="text.primary"
+                        letterSpacing={1}
+                    >
+                        Meet the brands we proudly collaborate with to deliver quality results.
+                    </Typography>
+                </Stack>
+
                 <Stack
-                    direction={'row'}
+                    direction="row"
                     gap={2}
                     my={6}
-                    justifyContent={'center'}
-                    flexWrap={'wrap'}
+                    justifyContent="center"
+                    flexWrap="wrap"
                 >
                     {brandCard.map((card, index) => (
                         <Stack
-                            component={'section'}
+                            component="section"
                             key={index}
                             boxShadow={3}
                             borderRadius={2}
                             flexBasis={350}
                             p={2}
                             sx={{
-                                backgroundImage: `url(${custumBgImage})`,
-                                backgroundSize: 'cover',
-                                backgroundRepeat: 'no-repeat',
-                                objectFit: 'cover',
+                                backdropFilter: "blur(14px)",
+                                backgroundColor: "rgba(192, 194, 196, 0.1)",
+                                boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.1)",
                                 transition: 'all 0.3s ease',
                                 '&:hover': {
-                                    transform: 'translateY(-15px)'
-                                }
+                                    transform: 'translateY(-15px)',
+                                },
                             }}
                         >
                             <Stack
-                                component={'img'}
+                                component="img"
                                 src={card.brandLogo}
                                 alt={card.brandName}
                                 maxWidth={150}
@@ -408,16 +420,17 @@ function About() {
                             />
                             <Typography
                                 gutterBottom
-                                variant='h6'
+                                variant="h6"
                                 letterSpacing={1}
                                 fontWeight={900}
                                 mt={1}
+                                color="text.primary"
                             >
                                 {card.brandName}
                             </Typography>
                             <Typography
-                                variant='body1'
-                                color='text.primary'
+                                variant="body1"
+                                color="text.secondary"
                                 gutterBottom
                                 mt={1}
                             >
@@ -426,6 +439,7 @@ function About() {
                         </Stack>
                     ))}
                 </Stack>
+
             </Box>
 
             {/* Third Section Contect Form  */}

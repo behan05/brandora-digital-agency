@@ -10,6 +10,7 @@ import {
     useTheme,
     useMediaQuery,
 } from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
 
 function Contact() {
     const [formData, setFormData] = useState({
@@ -133,11 +134,13 @@ function Contact() {
                         type="submit"
                         variant="outlined"
                         size="large"
+                        endIcon={<SendIcon />}
                         sx={{
                             alignSelf: 'flex-start',
                             px: 4,
                             color: 'text.secondary',
-                            border: '1px dotted',
+                            border: `1px dotted `,
+                            bgcolor: 'transparent'
                         }}
                     >
                         Send Message

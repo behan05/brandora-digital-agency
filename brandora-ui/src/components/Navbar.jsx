@@ -79,9 +79,9 @@ function Navbar() {
           p={2}
           borderRadius={2}
           sx={{
-            background: 'linear-gradient(125deg,rgba(246, 112, 37, 0.2) 50%,rgba(179, 85, 209, 0.1) 10%,rgba(176, 71, 237, 0.2))',
-            boxShadow: 'inset 0 0 0.2rem',
-            backdropFilter: 'blur(10px)',
+            backdropFilter: "blur(4px)",
+            backgroundColor: "rgba(192, 194, 196, 0.1)",
+            boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.1)",
           }}
         >
           {menuItem.map((item, index) => (
@@ -92,6 +92,8 @@ function Navbar() {
                 textDecoration: 'none',
                 fontFamily: theme.typography.fontFamily,
                 color: isActive ? theme.palette.primary.main : theme.palette.text.primary,
+                borderBottom: isActive ? `1px dotted ${theme.palette.primary.main}` : 'none',
+                paddingBottom: '2px',  // space so underline doesn't stick to text
               })}
             >
               <Typography variant='body1' sx={{
@@ -101,6 +103,7 @@ function Navbar() {
                 {item.linktext}
               </Typography>
             </NavLink>
+
           ))}
         </Stack>
       )}
@@ -112,13 +115,13 @@ function Navbar() {
           mr: 1,
           bgcolor: 'inherit',
         }}>
-        Raise Query ?
+        Inquire Now
       </CustomButton>
 
       {isSmallScreen && (
         <Tooltip title='Menu'>
           <IconButton edge='end' onClick={handleMenuClick}>
-            {!isMenuOpen && <ListIcon sx={{ cursor: 'pointer' }} />}
+            {!isMenuOpen && <ListIcon sx={{ cursor: 'pointer', color: theme.palette.text.main }} />}
           </IconButton>
         </Tooltip>
       )}

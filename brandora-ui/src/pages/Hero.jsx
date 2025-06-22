@@ -815,13 +815,14 @@ function Hero() {
                         .map((card, index) => (
                             <Stack
                                 key={index}
-                                borderRadius={2}
                                 boxShadow="0 8px 32px 0 rgba(0, 0, 0, 0.1)"
                                 p={2}
                                 spacing={2}
                                 sx={{
                                     backgroundColor: "rgba(192, 194, 196, 0.1)",
                                     backdropFilter: "blur(10px)",
+                                    borderRadius: 1,
+                                    borderBottom: `1px dotted ${theme.palette.primary.main}`,
                                     transition: 'all 0.3s ease',
                                     minHeight: 420,
                                     '&:hover': {

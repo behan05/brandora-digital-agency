@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Box, Button, IconButton, Stack, TextField, Typography, useMediaQuery, useTheme } from "../mui/muiComponents"
-import custumBgImage from '../assets/imgs/customBgImage.png'
 import EmailIcon from '@mui/icons-material/Email';
 import PhoneIcon from '@mui/icons-material/Phone';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -11,6 +10,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import axiosClient from '../api/axiosClient'
+import SendIcon from '@mui/icons-material/Send';
 
 function Footer() {
   const theme = useTheme();
@@ -40,16 +40,13 @@ function Footer() {
   return (
     <Box
       sx={{
-        backgroundImage: `url(${custumBgImage})`,
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        objectFit: 'cover',
         pt: 4,
         px: 2,
         display: 'flex',
         flexDirection: 'column',
-        borderTopRightRadius: '16px',
-        borderTopLeftRadius: '16px',
+        backdropFilter: "blur(10px)",
+        backgroundColor: "rgba(192, 194, 196, 0.1)",
+        boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.1)",
       }}
     >
       {/* Box 1 */}
@@ -94,13 +91,15 @@ function Footer() {
               <Button
                 type="submit"
                 variant="outlined"
+                endIcon={<SendIcon />}
                 sx={{
                   p: 1,
                   px: 3,
                   alignSelf: 'flex-center',
                   px: 4,
                   color: 'text.secondary',
-                  border: '1px dotted',
+                  border: `1px dotted ${theme.palette.primary.main}`,
+                  bgcolor: 'transparent'
                 }}>
                 Subscribe
               </Button>
@@ -153,7 +152,7 @@ function Footer() {
             <Stack direction="row" alignItems="center" gap={1}>
               <LocationOnIcon color={'text.success'} />
               <Typography variant='subtitle1' gutterBottom color='text.secondary'>
-                Zirakhpur Near Bus Stand<br />{' '}Pubjab. India (Undivided India)
+                Zirakhpur Near Bus Stand<br />{' '}Pubjab. (Undivided India)
               </Typography>
             </Stack>
             <Stack direction="row" alignItems="center" gap={1}>
