@@ -104,7 +104,7 @@ function About() {
 
             {/* Second Section */}
             <Stack component={'section'} mt={10} textAlign={'center'}>
-                <Typography variant='h5' gutterBottom>
+                <Typography variant='h5' letterSpacing={1} gutterBottom>
                     If you ready through the 3 points below, you will{<br />}
                     see that you can, that we are what you are looking for.
                 </Typography>
@@ -122,7 +122,6 @@ function About() {
                 display: 'flex',
                 flexDirection: { xs: 'column', md: 'column', lg: 'row' },
                 gap: { xs: 4, md: 8 },
-
             }} >
 
                 {/* Text Box */}
@@ -139,7 +138,7 @@ function About() {
                             bgcolor={theme.palette.background.paper}
                             width={50}
                             height={50}
-                            borderRight={5}
+                            borderRight={4}
                             borderRadius={2}
                             boxShadow={3}
                             justifyContent={'center'}
@@ -159,23 +158,21 @@ function About() {
                         </Stack>
                         <Typography
                             variant="h5"
-                            fontWeight={900}
+                            fontWeight={400}
                             color={theme.palette.text.primary}
-                            lineHeight={1.5}
                             gutterBottom
+                            letterSpacing={2}
+                            fontStyle={'italic'}
+                            mb={3}
                         >
-                            Brandora helps small {<br />}
-                            businesses get from Point {<br />}
-                            A to Point B
+                            Empowering Small Businesses {<br />} to Move from Vision to Growth
                         </Typography>
                         <Typography
                             variant="body1"
                             color={theme.palette.text.primary}
                             letterSpacing={1}
                         >
-                            Brandora helps small businesses grow and a lot of <br />
-                            our clients are making less than 20k in income <br />
-                            when they start with us.
+                            Brandora helps small businesses take the next step. <br />Many of our clients start with limited income,<br /> and with our guidance, they grow faster and smarter.
                         </Typography>
                     </Stack>
                 </Stack>
@@ -189,11 +186,12 @@ function About() {
                         sx={{
                             width: '100%',
                             maxWidth: 500,
-                            borderRadius: 2,
                             objectFit: 'cover',
+                            borderRadius: 2,
+                            filter: 'brightness(80%)',
                             transition: 'all 0.3s ease',
                             '&:hover': {
-                                filter: 'brightness(120%) saturate(120%)',
+                                filter: 'saturate(110%)',
                             },
                         }}
                     />
@@ -218,9 +216,10 @@ function About() {
                             maxWidth: 500,
                             borderRadius: 2,
                             objectFit: 'cover',
+                            filter: 'brightness(80%)',
                             transition: 'all 0.3s ease',
                             '&:hover': {
-                                filter: 'brightness(120%) saturate(120%)',
+                                filter: 'saturate(110%)',
                             },
                         }}
                     />
@@ -259,23 +258,27 @@ function About() {
                         </Stack>
                         <Typography
                             variant="h5"
-                            fontWeight={900}
+                            fontWeight={400}
                             color={theme.palette.text.primary}
-                            lineHeight={1.5}
                             gutterBottom
+                            letterSpacing={2}
+                            fontStyle={'italic'}
+                            mb={3}
                         >
-                            We Help You Grow {<br />}
-                            in Two Way {<br />}
+                            We Help You Grow <br />
+                            in Two Powerful Ways <br />
+
                         </Typography>
                         <Typography
                             variant="body1"
                             color={theme.palette.text.primary}
                             letterSpacing={1}
                         >
-                            Bi-weekly strategy meeting to <br />learn how your business is doing <br />
-                            to find out what is nedded next, Lorem.  adipiscing elit.<br /> seudo mod
-                            tempor incidient ut labor et <br />dolore magna alique.ut emin ad <br />
-                            minin veniam, quis Lorem ipsum dolor <br /> sit amet consectetur adipisicing elit.
+                            Bi-weekly strategy calls to <br />
+                            track your growth, set clear goals, <br />
+                            and plan the next steps effectively. <br />
+                            We guide your progress—one phase at a time. <br />
+
                         </Typography>
                     </Stack>
                 </Stack>
@@ -322,20 +325,27 @@ function About() {
                         </Stack>
                         <Typography
                             variant="h5"
-                            fontWeight={900}
+                            fontWeight={400}
                             color={theme.palette.text.primary}
-                            lineHeight={1.5}
                             gutterBottom
+                            letterSpacing={2}
+                            fontStyle={'italic'}
+                            mb={3}
                         >
-                            We recommend services {<br />}
-                            that you can afford {<br />}
+                            We recommend services <br />
+                            that truly fit your needs <br />
+                            and your budget.
+
                         </Typography>
                         <Typography
                             variant="body1"
                             color={theme.palette.text.primary}
                             letterSpacing={1}
                         >
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. <br /> Placeat et impedit accusamus esse commodi?<br /> Illo dignissimos, quibusdam doloribus <br />illum nulla modi! Iste assumenda quia, sunt<br /> ducimus atque laudantium delectus deserunt.
+                            We offer tailored solutions that fit your goals and budget. <br />
+                            No complexity — just what you need to grow with clarity. <br />
+                            Let us guide you with simple steps and practical results.
+
                         </Typography>
                     </Stack>
                 </Stack>
@@ -351,34 +361,34 @@ function About() {
                             maxWidth: 500,
                             borderRadius: 2,
                             objectFit: 'cover',
+                            filter: 'brightness(80%)',
                             transition: 'all 0.3s ease',
                             '&:hover': {
-                                filter: 'brightness(120%) saturate(120%)',
+                                filter: 'saturate(110%)',
                             },
                         }}
                     />
                 </Stack>
             </Stack>
 
-
             {/* Second Section Meeting Brand */}
             <Box mt={7}>
                 {/* == Trusted Brands Section == */}
-                <Stack textAlign="start" spacing={2} mb={4}>
-                    <Stack direction="row" alignItems="center" spacing={1}>
+                <Stack textAlign="center" spacing={2} mb={4}>
+                    <Stack direction="row" alignItems="center" justifyContent={'center'}>
                         <VerifiedIcon color="primary" />
                         <Typography
                             variant="subtitle1"
                             color="text.secondary"
                             letterSpacing={2}
-                            fontWeight={700}
+                            fontWeight={400}
                         >
                             TRUSTED BRANDS
                         </Typography>
                     </Stack>
                     <Typography
-                        variant="h5"
-                        fontWeight={700}
+                        variant="subtitle1"
+                        fontWeight={400}
                         color="text.primary"
                         letterSpacing={1}
                     >
@@ -421,9 +431,10 @@ function About() {
                             <Typography
                                 gutterBottom
                                 variant="h6"
-                                letterSpacing={1}
-                                fontWeight={900}
+                                letterSpacing={2}
+                                fontWeight={400}
                                 mt={1}
+                                fontStyle={'italic'}
                                 color="text.primary"
                             >
                                 {card.brandName}
@@ -433,6 +444,7 @@ function About() {
                                 color="text.secondary"
                                 gutterBottom
                                 mt={1}
+                                letterSpacing={1}
                             >
                                 {card.content}
                             </Typography>
@@ -449,8 +461,7 @@ function About() {
                     component="h1"
                     fontWeight={900}
                     color="text.secondary"
-                    letterSpacing={1}
-                    gutterBottom
+                    letterSpacing={2}
                     textAlign={'center'}
                 >
                     What{' '}are you confused about? <br /> here the answers.

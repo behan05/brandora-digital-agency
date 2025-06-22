@@ -7,7 +7,6 @@ import {
   Tooltip,
   IconButton
 } from '../mui/muiComponents'
-import logoImg from '../assets/imgs/logo.png'
 import { Link, NavLink } from 'react-router-dom';
 import ListIcon from '@mui/icons-material/List';
 import CustomButton from './CustomButton';
@@ -22,6 +21,10 @@ const menuItem = [
   {
     linktext: 'About Us',
     path: '/about',
+  },
+  {
+    linktext: 'Portfolio',
+    path: 'https://behan-portfolio.vercel.app',
   },
   {
     linktext: 'Services',
@@ -55,7 +58,9 @@ function Navbar() {
         alignItems: 'center',
         justifyContent: 'space-between',
         position: 'static',
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        mt: 2,
+        gap:1
       }}
     >
       <Box
@@ -65,7 +70,7 @@ function Navbar() {
           display: 'flex', alignItems: 'center'
         }}>
         <img
-          src={logoImg}
+          src={'/brandoraLogo.png'}
           alt="brand logo"
           style={{ width: 100, objectFit: 'cover' }}
         />
@@ -75,7 +80,7 @@ function Navbar() {
       {!isSmallScreen && (
         <Stack
           flexDirection={'row'}
-          gap={3}
+          gap={2}
           p={2}
           borderRadius={2}
           sx={{
@@ -112,7 +117,6 @@ function Navbar() {
       <CustomButton redirectedTo={'/contact'}
         sx={{
           ml: isSmallScreen && 'auto',
-          mr: 1,
           bgcolor: 'inherit',
         }}>
         Inquire Now

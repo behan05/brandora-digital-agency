@@ -139,8 +139,12 @@ function Contact() {
                             alignSelf: 'flex-start',
                             px: 4,
                             color: 'text.secondary',
-                            border: `1px dotted `,
-                            bgcolor: 'transparent'
+                            border: `1px dotted`,
+                            bgcolor: 'transparent',
+                            transition: `all 0.3s`,
+                            "&:hover": {
+                                ml: 2
+                            }
                         }}
                     >
                         Send Message

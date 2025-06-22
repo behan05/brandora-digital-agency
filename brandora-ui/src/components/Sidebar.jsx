@@ -20,6 +20,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import BuildIcon from '@mui/icons-material/Build';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
+import InfoOutlineIcon from '@mui/icons-material/InfoOutline';
 
 
 function Sidebar() {
@@ -40,8 +41,9 @@ function Sidebar() {
       PaperProps={{
         sx: {
           width: 250,
-          backgroundColor: 'transparent',
-          backdropFilter: 'blur(41px)',
+          backdropFilter: "blur(10px)",
+          backgroundColor: "rgba(192, 194, 196, 0.1)",
+          boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.1)",
           p: 2,
         }
       }}
@@ -67,6 +69,11 @@ function Sidebar() {
           { text: 'Services', path: '/services', icon: <BuildIcon sx={{ mr: 1 }} /> },
           { text: 'Hire Me', path: '/hire-me', icon: <ContactMailIcon sx={{ mr: 1 }} /> },
           { text: 'Fast Query ?', path: '/contact', icon: <WorkOutlineIcon sx={{ mr: 1 }} /> },
+          {
+            text: 'Portfolio',
+            path: 'https://behan-portfolio.vercel.app',
+            icon: <InfoOutlineIcon sx={{ mr: 1 }} />
+          },
         ].map(({ text, path, icon }) => (
           <ListItem
             button
@@ -78,7 +85,7 @@ function Sidebar() {
               borderRadius: 1,
               mb: 1,
               backgroundColor: 'transparent',
-              border: `1px solid ${theme.palette.warning.main}`,
+              borderBottom: `1px solid ${theme.palette.primary.main}`,
               backdropFilter: 'blur(4px)',
               color: theme.palette.text.primary,
               '&:hover': {

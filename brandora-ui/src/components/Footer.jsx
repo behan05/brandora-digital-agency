@@ -5,12 +5,13 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import CustomButton from './CustomButton';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
+import ForumIcon from '@mui/icons-material/Forum';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import axiosClient from '../api/axiosClient'
 import SendIcon from '@mui/icons-material/Send';
+import { Link } from 'react-router-dom';
 
 function Footer() {
   const theme = useTheme();
@@ -35,7 +36,24 @@ function Footer() {
     }
   };
 
-  const socialIcons = [FacebookIcon, InstagramIcon, TwitterIcon, LinkedInIcon];
+  const socialIcons = [
+    {
+      icon: ForumIcon,
+      href: 'https://dev.to/behan05'
+    },
+    {
+      icon: GitHubIcon,
+      href: 'https://github.com/behan05'
+    },
+    {
+      icon: TwitterIcon,
+      href: 'https://x.com/Behankumar05'
+    },
+    {
+      icon: LinkedInIcon,
+      href: 'https://www.linkedin.com/in/behan-kumar-25151b2ba/'
+    },
+  ];
 
   return (
     <Box
@@ -178,7 +196,7 @@ function Footer() {
           Together!
         </Typography>
 
-        <CustomButton sx={{
+        <CustomButton redirectedTo={'/contact'} endIcon={<SendIcon />} sx={{
           maxWidth: 200,
           mx: 'auto'
         }}>
@@ -187,8 +205,14 @@ function Footer() {
 
         <Stack direction="row" mx={'auto'} mt={2} spacing={1}>
           {socialIcons.map((IconComponent, index) => (
-            <IconButton key={index} aria-label={`social-icon-${index})`}>
-              <IconComponent />
+            <IconButton
+              target='__blank'
+              component={Link}
+              to={IconComponent.href}
+              key={index}
+              aria-label={`social-icon-${index})`}
+            >
+              <IconComponent.icon />
             </IconButton>
           ))}
         </Stack>
@@ -196,7 +220,7 @@ function Footer() {
 
       {/* Box 3 */}
       <Stack textAlign={'center'} mt={4}>
-        <Typography variant='label' color='text.secondary'>
+        <Typography variant='subtitle1' color='text.secondary' letterSpacing={2}>
           Copyright© {new Date().getFullYear()}{' '}Brandora, All rights reserved. Proudly Powered by MUI 5.
         </Typography>
       </Stack>

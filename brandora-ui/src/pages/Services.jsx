@@ -87,8 +87,13 @@ function Services() {
   return (
     <Box px={{ xs: 2, sm: 4, md: 8 }} py={{ xs: 4, sm: 6, md: 10 }}>
       {/* Intro Section */}
-      <Stack textAlign="center" spacing={2} mb={6}>
-        <Typography variant="h4" fontWeight={900}>
+      <Stack textAlign="start" spacing={2} mb={6}>
+        <Typography
+          variant="subtitle1"
+          color="text.secondary"
+          letterSpacing={2}
+          sx={{ textTransform: 'uppercase', fontWeight: 600 }}
+        >
           Our Services
         </Typography>
         <Typography variant="subtitle1" color="text.secondary">
@@ -102,19 +107,20 @@ function Services() {
         display: 'flex',
         flexWrap: 'wrap',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
         gap: 2,
       }}>
         {services.map((serviceCard, index) => (
           <Stack
-          key={index}
+            key={index}
             flexBasis={300}
             borderRadius={2}
             boxShadow={3}
             p={2}
             sx={{
-              background: 'linear-gradient(125deg,rgba(179, 85, 31, 0.1),rgba(179, 85, 209, 0.1) 10%,rgba(176, 71, 237, 0.1))',
-              backdropFilter: 'blur(20px)',
+              backdropFilter: "blur(14px)",
+              backgroundColor: "rgba(192, 194, 196, 0.1)",
+              boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.1)",
               transition: 'all 0.3s ease',
 
               '&:hover': {
@@ -125,7 +131,7 @@ function Services() {
               justifyContent={'center'}
               alignItems={'center'}
               maxWidth={'fit-content'}
-              mb={10}
+              mb={8}
             >
               <IconButton edge={'start'}>
                 {serviceCard.icon}
@@ -134,8 +140,9 @@ function Services() {
             <Typography
               gutterBottom
               color='text.secondary'
-              variant='subtitle'
+              variant='subtitle1'
               letterSpacing={1}
+              sx={{ textTransform: 'uppercase' }}
             >
               {serviceCard.title}
             </Typography>
@@ -145,6 +152,7 @@ function Services() {
                 color='text.primary'
                 variant='body2'
                 letterSpacing={1}
+                mt={1}
               >
                 {serviceCard.description}
               </Typography>

@@ -883,7 +883,11 @@ function Hero() {
                         variant="subtitle1"
                         color="text.secondary"
                         letterSpacing={2}
-                        sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 1,
+                        }}
                     >
                         <FormatQuoteIcon fontSize="small" />
                         TESTIMONIALS
@@ -922,8 +926,9 @@ function Hero() {
                             p={2}
                             borderRadius={2}
                             sx={{
-                                background: 'linear-gradient(125deg,rgba(179, 85, 31, 0.1),rgba(179, 85, 209, 0.1) 10%,rgba(176, 71, 237, 0.1))',
-                                backdropFilter: 'blur(20px)',
+                                backdropFilter: "blur(10px)",
+                                backgroundColor: "rgba(192, 194, 196, 0.1)",
+                                boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.1)",
                                 transition: 'all 0.3s ease',
                                 '&:hover': {
                                     transform: 'translateY(-15px)'
@@ -998,14 +1003,14 @@ function Hero() {
                             sx={{
                                 my: 2,
                                 px: 1,
-                                background: 'linear-gradient(125deg, rgba(246, 112, 37, 0.2) 50%, rgba(179, 85, 209, 0.1), rgba(176, 71, 237, 0.2))',
-                                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.08)',
-                                backdropFilter: 'blur(10px)',
+                                backdropFilter: "blur(10px)",
+                                backgroundColor: "rgba(192, 194, 196, 0.1)",
+                                boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.1)",
                                 borderRadius: 2,
                             }}
                         >
                             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                                <Typography variant="subtitle1" fontWeight={600}>
+                                <Typography variant="subtitle1" letterSpacing={2} fontWeight={600}>
                                     {faq.question}
                                 </Typography>
                             </AccordionSummary>

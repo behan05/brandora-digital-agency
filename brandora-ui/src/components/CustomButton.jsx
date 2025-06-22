@@ -10,6 +10,7 @@ function CustomButton({ redirectedTo, children, ...props }) {
             component={Link}
             to={redirectedTo}
             {...props}
+            aria-label="CTA-BUTTON"
             sx={{
                 maxWidth: 'fit-content',
                 bgcolor: 'transparent',
