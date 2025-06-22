@@ -35,7 +35,7 @@ function Layout() {
           filter: 'brightness(0.15)',
           zIndex: -2,
         }}
-        src={isMd ? "/videos/bgVideo3.mp4" : "/videos/bgVideo1.mp4"}
+        src={isMd ? "/videos/bgVideo3.mp4" : "/videos/bgVideo2.mp4"}
         type="video/mp4"
       />
 
