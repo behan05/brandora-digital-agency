@@ -1,7 +1,8 @@
-import { Button } from '../mui/muiComponents';
+import { Button, useTheme } from '../mui/muiComponents';
 import { Link } from 'react-router-dom';
 
 function CustomButton({ redirectedTo, children, ...props }) {
+    const theme = useTheme();
 
     return (
         <Button
@@ -10,18 +11,17 @@ function CustomButton({ redirectedTo, children, ...props }) {
             to={redirectedTo}
             {...props}
             sx={{
-                bgcolor: 'inherit',
-                transition: 'background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease',
+                maxWidth: 'fit-content',
+                bgcolor: 'transparent',
                 color: 'text.primary',
-                background: 'linear-gradient(125deg, #f67025 50%, #b355d1 10%, #B047ED)',
+                borderRadius: 1,
                 opacity: 1,
-                border: 'none',
+                border: `1px dotted ${theme.palette.primary.main}`,
+                transition: 'all 0.3s ease',
 
                 '&:hover': {
-                    background: 'linear-gradient(125deg, #b355d1 50%, #f67025 10%, #B047ED)',
-                    color: '#fff',
-                    border: 'none',
-                    opacity: 0.8,
+                    color: 'text.primary',
+                    transform: `translateY(-6px)`,
                 },
                 ...props.sx,
             }}

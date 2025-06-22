@@ -1,6 +1,6 @@
 const typography = {
-    // fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
-    fontFamily: '"Titillium Web", sans-serif',
+    fontFamily: ' "Lora", serif',
+    fontOpticalSizing: 'auto',
 
     h1: {
         fontSize: '2.2rem',

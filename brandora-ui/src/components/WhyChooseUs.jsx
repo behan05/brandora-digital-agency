@@ -1,29 +1,57 @@
 import React from 'react';
-import { Box, Stack, Typography, useTheme, useMediaQuery } from '../mui/muiComponents'
+import { Box, Stack, Typography, useTheme, useMediaQuery } from '../mui/muiComponents';
 import whyChooseUs from "../assets/imgs/whyChooseUs.jpg";
 import GradeIcon from '@mui/icons-material/Grade';
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
+import ThumbUpAltOutlinedIcon from '@mui/icons-material/ThumbUpAltOutlined'; // or use any icon you prefer
 
 
 function WhyChooseUs() {
-
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
     const isLg = useMediaQuery(theme.breakpoints.down('lg'));
 
+    const cardData = [
+        {
+            icon: <GradeIcon sx={{ fontSize: 30, color: theme.palette.warning.main }} />,
+            title: 'Proven Track Record',
+            content: 'We’ve helped businesses across industries achieve their goals.',
+        },
+        {
+            icon: <TipsAndUpdatesIcon sx={{ fontSize: 30, color: theme.palette.success.main }} />,
+            title: 'Tailored Solutions',
+            content: 'Your business is unique, and so are our strategies.',
+        },
+        {
+            icon: <AttachMoneyIcon sx={{ fontSize: 30, color: theme.palette.success.main }} />,
+            title: 'Competitive Pricing',
+            content: 'We offer our top-quality services at competitive prices.',
+        },
+        {
+            icon: <DeveloperBoardIcon sx={{ fontSize: 30, color: theme.palette.warning.main }} />,
+            title: 'Data-Driven Approach',
+            content: 'We leverage data and insights to make informed decisions.',
+        },
+    ];
+
     return (
-        <Box component={'section'}>
-            <Stack textAlign="start" my={6} maxWidth={900}>
-                <Typography
-                    variant="subtitle1"
-                    color="text.secondary"
-                    letterSpacing={1}
-                    gutterBottom
-                >
-                    Why Choose Us
-                </Typography>
+        <Box component="section" sx={{ py: 6, px: { xs: 2, sm: 4, md: 6 } }}>
+            {/* Header */}
+            <Stack textAlign="start" spacing={2} maxWidth={900} mb={4}>
+                {/* Heading with icon and uppercase */}
+                <Stack direction="row" alignItems="center" gap={1}>
+                    <ThumbUpAltOutlinedIcon color="secondary" fontSize="small" />
+                    <Typography
+                        variant="subtitle1"
+                        color="text.secondary"
+                        letterSpacing={2}
+                        sx={{ textTransform: 'uppercase', fontWeight: 600 }}
+                    >
+                        Why Choose Us
+                    </Typography>
+                </Stack>
 
                 <Typography
                     variant={isSmallScreen ? 'h5' : 'h4'}
@@ -32,7 +60,6 @@ function WhyChooseUs() {
                     fontWeight={700}
                     color="text.secondary"
                     letterSpacing={1}
-                    gutterBottom
                 >
                     Expertise{' '}
                     <Box component="span" color="text.primary" fontStyle="normal">
@@ -41,120 +68,96 @@ function WhyChooseUs() {
                 </Typography>
 
                 <Typography variant="body2" color="text.secondary">
-                    Our dedicated team is{' '}
-                    <Box component="span" color="text.primary">committed</Box> to understanding your {' '}
-                    <Box component="span" color="text.primary">unique needs,</Box> ensuring that we provide innovative{' '}
-                    <Box component="span" color="text.primary">strategies </Box>that drive results. With a focus on{' '}
-                    <Box component="span" color="text.primary">quality and integrity.</Box>
+                    Our dedicated team is <Box component="span" color="text.primary">committed</Box> to understanding your{' '}
+                    <Box component="span" color="text.primary">unique needs</Box>, ensuring that we provide innovative{' '}
+                    <Box component="span" color="text.primary">strategies</Box> that drive results — with a focus on{' '}
+                    <Box component="span" color="text.primary">quality and integrity</Box>.
                 </Typography>
             </Stack>
 
+
+            {/* Content Grid */}
             <Box
                 sx={{
                     display: 'flex',
-                    flexDirection: isSmallScreen ? 'column' : isLg ? 'column' : 'row',
-                    gap: 1,
-                    width: '100%',
+                    flexDirection: isSmallScreen || isLg ? 'column' : 'row',
+                    gap: 3,
+                    alignItems: 'stretch',
                 }}
             >
-                {/* Cards */}
+                {/* Cards Grid */}
                 <Box
                     flex={1}
                     sx={{
                         display: 'grid',
                         gridTemplateColumns: isSmallScreen ? '1fr' : 'repeat(2, 1fr)',
                         gap: 2,
-                        order: isLg && 2,
+                        order: isLg ? 2 : 1,
                     }}
                 >
-                    {[
-                        {
-                            icon: <GradeIcon sx={{ fontSize: '2rem', color: theme.palette.warning.main }} />,
-                            title: `Proven Track Record`,
-                            content: 'We’ve helped businesses across industries achieve their goals'
-                        },
-                        {
-                            icon: <TipsAndUpdatesIcon sx={{ fontSize: '2rem', color: theme.palette.success.main }} />,
-                            title: `Tailored Solutions`,
-                            content: `Your business is unique, and so are our strategies.`
-                        },
-                        {
-                            icon: <AttachMoneyIcon sx={{ fontSize: '2rem', color: theme.palette.success.main }} />,
-                            title: `Competitive Pricing`,
-                            content: `We offer our top-quality services at competitive prices`
-                        },
-                        {
-                            icon: <DeveloperBoardIcon sx={{ fontSize: '2rem', color: theme.palette.warning.main }} />,
-                            title: `Data-Driven Approach`,
-                            content: `We leverage data and insights to make informed decisions`
-                        },
-                    ].map((card, index) => (
+                    {cardData.map((card, index) => (
                         <Stack
                             key={index}
+                            p={3}
                             borderRadius={2}
-                            p={2}
+                            spacing={2}
                             boxShadow={3}
                             sx={{
-                                background: 'linear-gradient(125deg,rgba(179, 85, 31, 0.1),rgba(179, 85, 209, 0.1) 10%,rgba(176, 71, 237, 0.1))',
-                                backdropFilter: 'blur(4px)',
-                                transition: 'all 0.3s ease',
-
-                                '&:hover': {
-                                    transform: 'translateY(-15px)'
-                                }
+                                background: 'rgba(255, 255, 255, 0.04)',
+                                backdropFilter: 'blur(6px)',
+                                transition: 'transform 0.3s ease',
+                                '&:hover': { transform: 'translateY(-10px)' },
                             }}
                         >
-                            <Stack pb={isSmallScreen ? 4 : 6}>
-                                {card.icon}
-                            </Stack>
-                            <Typography
-                                color='text.primary'
-                                variant='subtitle1'
-                                letterSpacing={1}
-                                gutterBottom
-                                fontWeight={600}
-                            >
+                            <Box>{card.icon}</Box>
+                            <Typography variant="subtitle1" fontWeight={600} color="text.primary">
                                 {card.title}
                             </Typography>
-                            <Typography
-                                color='text.secondary'
-                                variant='body1'
-                                letterSpacing={1}
-                                gutterBottom
-                                fontWeight={400}
-                            >
+                            <Typography variant="body2" color="text.secondary">
                                 {card.content}
                             </Typography>
                         </Stack>
                     ))}
                 </Box>
 
-                {/* Why Choose Us Image */}
-                <Box flex={1}>
-                    <Stack
-                        component={'img'}
-                        src={whyChooseUs}
-                        alt='Why Choose Us Image'
-                        width={'100%'}
-                        height={'100%'}
-                        borderRadius={2}
-                        boxShadow={3}
-
+                {/* Image */}
+                <Box flex={1} order={isLg ? 1 : 2} sx={{
+                    p: isSmallScreen ? 1 : 3,
+                    backdropFilter: "blur(10px)",
+                    backgroundColor: "rgba(192, 194, 196, 0.1)",
+                    boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.1)",
+                    borderRadius: 1,
+                    borderBottom: `1px dotted ${theme.palette.primary.main}`,
+                    overflow: 'hidden'
+                }}>
+                    <Box
+                        component="video"
+                        src={'/videos/whyChooseUs.mp4'}
+                        alt="Why Choose Us video"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
                         sx={{
+                            width: '100%',
+                            height: '100%',
+                            maxHeight: 500,
                             objectFit: 'cover',
-                            opacity: 0.8,
-                            transition: 'all 0.3s ease',
-                            filter: 'brightness(100%)',
-                            '&:hover': {
-                                opacity: 1,
-                                filter: 'brightness(120%)',
+                            borderRadius: 1,
+                            boxShadow: 3,
+                            filter: 'brightness(0.85) saturate(120%)',
+                            borderRadius: 1,
+                            boxShadow: 3,
+                            transition: `transform 0.3s`,
+                            "&:hover": {
+                                transform: `scale(1.1)`
                             }
                         }}
                     />
                 </Box>
             </Box>
         </Box>
-    )
+    );
 }
 
-export default WhyChooseUs
+export default WhyChooseUs;

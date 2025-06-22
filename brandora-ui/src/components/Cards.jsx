@@ -3,31 +3,53 @@ import { Box, Stack, Typography, useTheme } from "../mui/muiComponents";
 
 function Cards({ icon, header, content }) {
     const theme = useTheme();
+
     return (
-        <Box sx={{
-            p: theme.spacing(2),
-            boxShadow: 3,
-            borderRadius: 2,
-            background: 'linear-gradient(125deg,rgba(179, 85, 31, 0.1),rgba(179, 85, 209, 0.1) ,rgba(176, 71, 237, 0.1))',
-            backdropFilter: 'blur(20px)',
-            transition: 'transform 0.3s ease',
-            '&:hover': {
-                transform: 'translateY(-15px)'
-            }
-        }}>
-            <Stack mb={15}>
+        <Box
+            sx={{
+                p: theme.spacing(3),
+                borderRadius: 2,
+                backdropFilter: "blur(10px)",
+                backgroundColor: "rgba(192, 194, 196, 0.1)",
+                boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
+                transition: 'transform 0.3s ease',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                '&:hover': {
+                    transform: 'translateY(-12px)',
+                },
+            }}
+        >
+            <Stack
+                direction="row"
+                alignItems="center"
+                spacing={1}
+                mb={2}
+                sx={{ color: theme.palette.secondary.main }}
+            >
                 {icon}
+                <Typography
+                    variant="subtitle1"
+                    fontWeight={700}
+                    color="text.primary"
+                >
+                    {header}
+                </Typography>
             </Stack>
 
-            <Typography variant='subtitle2' color='text.secondary' gutterBottom>
-                {header}
-            </Typography>
-
-            <Typography variant='body1' color='text.primary' fontWeight={400} letterSpacing={1}>
+            <Typography
+                variant="body2"
+                color="text.secondary"
+                fontWeight={400}
+                letterSpacing={0.8}
+                lineHeight={1.7}
+            >
                 {content}
             </Typography>
         </Box>
-    )
+    );
 }
 
-export default Cards
+export default Cards;

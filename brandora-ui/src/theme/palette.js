@@ -1,4 +1,5 @@
 const palette = {
+  mode: 'dark',
 
   primary: {
     main: '#1976d2',         // Blue
@@ -42,26 +43,27 @@ const palette = {
     contrastText: '#ffffff',
   },
 
+
   background: {
-    default: '#f4f6f8',     // App background
-    paper: '#ffffff',       // Cards, modals
+    default: 'transparent', // important for video
+    paper: 'rgba(18, 18, 18, 0.75)', // cards over video
   },
 
   text: {
     primary: '#ffffff',
-    secondary: '#D5BEBC',
-    disabled: '#9e9e9e',
+    secondary: '#cccccc',
+    disabled: '#888888',
   },
 
-  divider: '#e0e0e0',       // Line borders and separators
+  divider: 'rgba(255,255,255,0.12)',
 
   action: {
-    hover: '#f5f5f5',
-    selected: '#e0e0e0',
-    disabled: '#c7c7c7',
-    disabledBackground: '#f0f0f0',
-    focus: '#e3f2fd',
-    active: '#e3f2fd',
+    hover: 'rgba(255,255,255,0.08)',
+    selected: 'rgba(255,255,255,0.16)',
+    disabled: 'rgba(255,255,255,0.3)',
+    disabledBackground: 'rgba(255,255,255,0.12)',
+    focus: 'rgba(255,255,255,0.12)',
+    active: 'rgba(255,255,255,0.24)',
   },
 };
 

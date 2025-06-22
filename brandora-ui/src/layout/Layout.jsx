@@ -1,6 +1,5 @@
 import { Box, useMediaQuery, useTheme } from "../mui/muiComponents";
 import Navbar from '../components/Navbar';
-import custumBgImage from '../assets/imgs/customBgImage.png';
 import Sidebar from "../components/Sidebar";
 import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
@@ -13,14 +12,46 @@ function Layout() {
   return (
     <Box
       sx={{
+        position: 'relative',
+        minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
-        backgroundImage: `url(${custumBgImage})`,
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        objectFit: 'cover'
+        zIndex: 1,
       }}
     >
+      {/* Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          filter: 'brightness(0.15)',
+          zIndex: -2,
+        }}
+        src={isMd ? "/videos/bgVideo3.mp4" : "/videos/bgVideo1.mp4"}
+        type="video/mp4"
+      />
+
+      {/* Optional Dark Overlay */}
+      <Box
+        sx={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(0, 0, 0, 0.25)',
+          zIndex: -1,
+        }}
+      />
+
       <Box sx={{ px: contentPadding }}>
         <Navbar />
       </Box>

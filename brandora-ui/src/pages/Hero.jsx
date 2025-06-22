@@ -9,6 +9,7 @@ import {
 } from '../mui/muiComponents';
 import CustomButton from '../components/CustomButton';
 
+
 // Icons
 import SearchIcon from '@mui/icons-material/Search';
 import LanguageIcon from '@mui/icons-material/Language';
@@ -23,18 +24,32 @@ import logo4 from "../assets/companyLogo/logo-4.png";
 import logo5 from "../assets/companyLogo/logo-5.png";
 import logo6 from "../assets/companyLogo/logo-5.png";
 import WhoWeAreCard from '../components/WhoWeAreCard';
-import whoWeAre from "../assets/imgs/whoWeAre.jpg";
 import process1 from "../assets/imgs/process1.jpg";
 import process2 from "../assets/imgs/process2.jpg";
 import process3 from "../assets/imgs/process3.jpg";
+import TimelineOutlinedIcon from '@mui/icons-material/TimelineOutlined';
+import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
+import QuizIcon from '@mui/icons-material/Quiz';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import EngineeringOutlinedIcon from '@mui/icons-material/EngineeringOutlined';
+import RocketLaunchOutlinedIcon from '@mui/icons-material/RocketLaunchOutlined';
 
+import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 
 import LaunchIcon from '@mui/icons-material/Launch';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 import WhyChooseUs from '../components/WhyChooseUs';
 import Contact from '../components/Contact';
-import custumBgImage from '../assets/imgs/customBgImage.png';
+import DesignServicesOutlinedIcon from '@mui/icons-material/DesignServicesOutlined';
+
+
+import {
+    InfoOutlined,
+    GroupOutlined,
+    EmojiObjectsOutlined,
+    LaunchOutlined,
+} from '@mui/icons-material';
 
 function Hero() {
     const theme = useTheme();
@@ -45,7 +60,7 @@ function Hero() {
     // Slide Count
     const [currentIndex, setCurrentIndex] = useState(0);
     const visibleCards = isSmallScreen ? 1 : isMd ? 2 : isLg ? 2 : 4;
-
+    const [hovered, setHovered] = useState(false);
     const sliderCard = [
         {
             image: "https://randomuser.me/api/portraits/women/44.jpg",
@@ -218,82 +233,89 @@ function Hero() {
                 sx={{
                     color: 'text.primary',
                     px: { xs: 2, sm: 4, md: 8 },
-                    py: { xs: 4, sm: 6, md: 10 },
+                    py: { xs: 6, sm: 8, md: 12 },
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
                     textAlign: { xs: 'center', sm: 'left' },
                 }}
             >
+                {/* Intro Tagline */}
                 <Typography
-                    variant="subtitle1"
+                    variant="subtitle2"
                     color="text.secondary"
+                    fontWeight={500}
                     gutterBottom
+                    mb={3}
                 >
                     [ Digital Marketing ]
                 </Typography>
 
+                {/* Main Headline */}
                 <Typography
-                    variant={isSmallScreen ? 'h4' : "h3"}
+                    variant={(isSmallScreen || isMd) ? 'h4' : isLg ? 'h3' : 'h2'}
                     component="h1"
-                    fontWeight="bold"
+                    fontWeight={800}
                 >
                     Innovative
                 </Typography>
 
+                {/* Stacked Sub-Headline */}
                 <Stack
                     direction={isSmallScreen ? 'column' : 'row'}
-                    spacing={isSmallScreen ? 1 : 2}
+                    spacing={isSmallScreen ? 0.5 : 2}
                     justifyContent={isSmallScreen ? 'center' : 'flex-start'}
-                    sx={{ textAlign: { xs: 'center', sm: 'left' }, mt: 1 }}
+                    alignItems={isSmallScreen ? 'center' : 'baseline'}
+                    sx={{ mt: 1, textAlign: { xs: 'center', sm: 'left' } }}
                 >
                     <Typography
-                        variant={isSmallScreen ? 'h4' : "h3"}
+                        variant={(isSmallScreen || isMd) ? 'h4' : isLg ? 'h3' : 'h2'}
                         color="text.secondary"
-                        fontWeight="bold"
-                        lineHeight={1.5}
+                        fontWeight={700}
                         sx={{ fontStyle: 'italic' }}
                     >
                         Solutions
                     </Typography>
-
                     <Typography
-                        variant={isSmallScreen ? 'h4' : "h3"}
-                        fontWeight="bold"
-                        lineHeight={1.5}
-                        color={theme.palette.text.primary}
+                        variant={(isSmallScreen || isMd) ? 'h4' : isLg ? 'h3' : 'h2'}
+                        fontWeight={700}
                     >
                         For Your
                     </Typography>
                 </Stack>
 
                 <Typography
-                    variant={isSmallScreen ? 'h4' : "h3"}
-                    fontWeight="bold"
-                    color={theme.palette.text.primary} mb={2}
+                    variant={(isSmallScreen || isMd) ? 'h4' : isLg ? 'h3' : 'h2'}
+                    fontWeight={800}
+                    mt={0.5}
+                    mb={2}
                 >
                     Digital Brands
                 </Typography>
 
+                {/* Closing Tagline */}
                 <Typography
-                    variant="subtitle1"
+                    variant="subtitle2"
                     color="text.secondary"
+                    fontWeight={500}
                     gutterBottom
+                    my={3}
                 >
                     [ Marketing Agency ]
                 </Typography>
 
+                {/* Body Content & CTA */}
                 <Stack
-                    spacing={3}
+                    spacing={5}
                     alignItems={isSmallScreen ? 'center' : 'flex-start'}
+                    maxWidth="md"
                 >
                     <Typography
                         variant="body1"
                         color="text.secondary"
-                        maxWidth="md"
-                        letterSpacing={1.6}
-                        gutterBottom
-                        textAlign={'justify'}
+                        textAlign="start"
+                        letterSpacing={1.2}
+                        lineHeight={1.8}
                     >
                         Experience the transformative power of our expert marketing strategies as we partner with you to elevate your brand's digital presence. From data-driven campaigns to cutting-edge digital solutions, we tailor every strategy to meet your unique business goals. Let us take your brand to new heights online where visibility, engagement, and growth converge.
                     </Typography>
@@ -301,9 +323,13 @@ function Hero() {
                     <CustomButton
                         redirectedTo="/hire-me"
                         sx={{
-                            maxWidth: '260px',
+                            mt: 1,
                             fontWeight: 600,
-                            mt: 2,
+                            maxWidth: '260px',
+                            px: 4,
+                            py: 1.5,
+                            borderRadius: '8px',
+                            fontSize: '1rem',
                         }}
                     >
                         Start Your Project
@@ -311,133 +337,184 @@ function Hero() {
                 </Stack>
             </Box>
 
-            {/* ===  brand logo Section === */}
-            <Box>
-                <Stack display={'flex'} justifyContent={'center'} alignItems={'center'}>
-                    <Typography
-                        variant='h6'
-                        color='text.primary'>
-                        Join over {" "}
-                        <Typography
-                            variant='h6'
-                            component={'span'}
-                            color='text.secondary'
-                        >200,000+ businesses {" "}
-                        </Typography>
-                        to create unique brand designs.
-                    </Typography>
 
-                    <Stack
-                        gap={2}
-                        direction={'row'}
-                        my={4}
-                        flexWrap={'wrap'}
-                        alignItems={'center'}
-                        justifyContent={'center'}
-                    >
-                        {brandLogo.map((logo, index) => (
-                            <Stack
-                                key={index}
-                                maxWidth={150}
-                                p={2}
-                                borderRadius={1}
+            {/* === Brand Logo Section === */}
+            <Box
+                sx={{
+                    px: { xs: 2, sm: 4, md: 8 },
+                    py: { xs: 4, sm: 6, md: 8 },
+                    textAlign: 'center',
+                }}
+            >
+                <Typography variant="h6" color="text.primary" mb={2}>
+                    Join over{' '}
+                    <Box component="span" sx={{ color: 'text.secondary', fontWeight: 600 }}>
+                        200,000+ businesses
+                    </Box>{' '}
+                    to create unique brand designs.
+                </Typography>
+
+                <Stack
+                    direction="row"
+                    gap={3}
+                    my={4}
+                    flexWrap="wrap"
+                    justifyContent="center"
+                    alignItems="center"
+                >
+                    {brandLogo.map((logo, index) => (
+                        <Box
+                            key={index}
+                            sx={{
+                                p: 2,
+                                m: 1,
+                                maxWidth: 140,
+                                borderRadius: 2,
+                                backgroundColor: 'rgba(255,255,255,0.05)',
+                                backdropFilter: 'blur(10px)',
+                                transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                                boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+                                cursor: 'pointer',
+                                '&:hover': {
+                                    transform: 'translateY(-6px)',
+                                    boxShadow: '0 8px 24px rgba(0,0,0,0.2)',
+                                },
+                            }}
+                        >
+                            <Box
+                                component="img"
+                                src={logo}
+                                alt={`brand-logo-${index}`}
                                 sx={{
-                                    cursor: 'pointer',
-                                    filter: 'drop-shadow(0 0 2rem #000)',
-                                    boxShadow: `0 0 1rem rgba(20, 18, 16, 0.6), 0 0 1.2rem rgba(24, 17, 2, 0.5), 0 0 1.5rem rgba(97, 39, 131, 0.2)`,
-                                    borderRadius: 2,
+                                    width: '100%',
+                                    height: 'auto',
+                                    objectFit: 'contain',
                                 }}
-                            >
-                                <Stack component={'img'} maxWidth={200} src={logo} />
-                            </Stack>
-                        ))}
-                    </Stack>
+                            />
+                        </Box>
+                    ))}
                 </Stack>
             </Box>
 
-            {/* === Who we are Section === */}
 
-            <Box sx={{
-                px: { xs: 2, sm: 4, md: 4 },
-                py: 6,
-                display: 'flex',
-                flexDirection: isLg ? 'column' : 'row',
-                flexGrow: 1,
-                gap: 2
-            }}>
-                <Box flex={3} sx={{ maxHeight: 800, }}>
+            {/* === Who We Are Section === */}
+            <Box
+                sx={{
+                    px: { xs: 2, sm: 4, md: 8 },
+                    py: { xs: 6, sm: 8 },
+                    display: 'flex',
+                    flexDirection: { xs: 'column', lg: 'row' },
+                    gap: { xs: 4, md: 6 },
+                    alignItems: 'flex-start',
+                }}
+            >
+                {/* Left Column – Text + Image */}
+                <Stack flex={3} gap={1}>
                     <Typography
-                        variant='subtitle2'
-                        color='text.secondary'
+                        variant="overline"
+                        color="text.secondary"
+                        letterSpacing={2}
+                        sx={{
+                            fontWeight: 600,
+                            fontSize: '0.9rem',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 1,
+                        }}
                         gutterBottom
-                        letterSpacing={1}
                     >
+                        <InfoOutlined fontSize="small" />
                         Who We Are?
                     </Typography>
+
                     <Typography
-                        variant='body1'
-                        color='text.primary'
+                        variant="subtitle1"
+                        color="text.primary"
                         gutterBottom
-                        letterSpacing={2}
-                        my={2}
+                        sx={{
+                            display: 'flex',
+                            alignItems: 'flex-start',
+                            gap: 1,
+                        }}
                     >
-                        At Digimaven we’re more than just a Digital marketing studio we’re your dedicated team of experts passionate about helping businesses thrive in the digital age.
+                        <GroupOutlined sx={{ mt: '4px' }} />
+                        At Brandora, we’re a team of experts helping businesses grow in the digital age.
                     </Typography>
 
                     <Typography
-                        variant='subtitle2'
-                        color='text.secondary'
-                        gutterBottom
-                        letterSpacing={1}
+                        variant="body1"
+                        color="text.secondary"
+                        sx={{
+                            maxWidth: '95%',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 1,
+                        }}
+                        mb={3}
                     >
-                        Our mission is to empower businesses of all sizes to thrive in the digital landscape.
+                        <EmojiObjectsOutlined sx={{ color: 'warning.main' }} />
+                        Our mission is to help businesses succeed online through tailored, results-driven strategies.
                     </Typography>
 
-                    <CustomButton redirectedTo={'/about'} sx={{ my: 2 }}>
+                    <CustomButton
+                        redirectedTo="/about"
+                        sx={{ mb: 4 }}
+                        startIcon={<LaunchOutlined />}
+                    >
                         About Us
                     </CustomButton>
 
                     <Box
-                        component={'section'}
-                        my={4}
                         sx={{
-                            objectFit: 'cover',
-                            maxWidth: '100%',
-                            height: '400px',
-                            overflow: 'hidden',
                             borderRadius: 3,
+                            overflow: 'hidden',
+                            maxWidth: '100%',
+                            p: isSmallScreen ? 1 : 3,
+                            height: 400,
                             boxShadow: 3,
-                            transition: 'all 0.3s ease',
-
-                            '&:hover': {
-                                filter: 'brightness(150%)',
-                            }
+                            backdropFilter: "blur(14px)",
+                            backgroundColor: "rgba(192, 194, 196, 0.1)",
+                            boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.1)",
+                            borderRadius: 1,
+                            borderBottom: `1px dotted ${theme.palette.primary.main}`
                         }}
                     >
-                        <Stack
-                            component={'img'}
-                            src={whoWeAre}
-                            alt="who we are image"
-                            style={{
+                        <Box
+                            component="video"
+                            src={'/videos/whoWeAre.mp4'}
+                            alt="Team working collaboratively video"
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            sx={{
                                 width: '100%',
                                 height: '100%',
                                 objectFit: 'cover',
-                                display: 'block',
-                                filter: 'brightness(80%)',
+                                filter: 'brightness(0.85) saturate(120%)',
+                                borderRadius: 1,
+                                boxShadow: 3,
+                                transition: `transform 0.3s`,
+                                "&:hover": {
+                                    transform: `scale(1.1)`
+                                }
                             }}
                         />
                     </Box>
-                </Box>
+                </Stack>
 
-                <Box component={'section'} flex={2} sx={{
-                    overflowY: 'auto',
-                    display: 'grid',
-                    gridTemplateRows: 'repeat(auto, 1fr)',
-                    maxHeight: 800,
-                    gap: { xs: 1, sm: 2, md: 2 },
-                    p: { xs: 0.5, sm: 2, md: 4 },
-
-                }}>
+                {/* Right Column – Info Cards */}
+                <Box
+                    flex={2}
+                    sx={{
+                        display: 'grid',
+                        gridAutoRows: '1fr',
+                        gap: { xs: 2, sm: 3 },
+                        maxHeight: 800,
+                        overflowY: 'auto',
+                        p: { xs: 1, sm: 2 },
+                    }}
+                >
                     {WhoWeAreCardItems.map((item) => (
                         <WhoWeAreCard
                             key={item.label}
@@ -458,27 +535,46 @@ function Hero() {
                 py: 6
             }}
             >
-                <Stack textAlign="center" letterSpacing={1} color={theme.palette.text.primary}>
-                    <Typography variant="subtitle1" color="text.secondary" gutterBottom>
-                        Our Services
-                    </Typography>
+                <Stack textAlign="start" letterSpacing={1} color={theme.palette.text.primary}>
+                    {/* Heading with Icon */}
+                    <Stack direction="row" justifyContent="start" alignItems="center" spacing={1} mb={1}>
+                        <DesignServicesOutlinedIcon color="secondary" fontSize="small" />
+                        <Typography
+                            variant="subtitle1"
+                            color="text.secondary"
+                            sx={{ textTransform: 'uppercase', fontWeight: 600, letterSpacing: 2 }}
+                        >
+                            Our Services
+                        </Typography>
+                    </Stack>
+
+                    {/* Title */}
                     <Typography
-                        variant={isSmallScreen ? 'h5' : "h4"}
+                        variant={isSmallScreen ? 'h5' : 'h4'}
                         fontWeight={700}
                         component="h1"
-                        color={theme.palette.text.primary}
+                        color="text.primary"
+                        sx={{
+                            display: 'inline-block',
+                            lineHeight: 1.4,
+                        }}
                     >
-                        Build Brand Visibility With {<br></br>} Marketing{' '}
-                        <Typography
-                            variant={isSmallScreen ? 'h5' : "h4"}
+                        Build Brand Visibility With
+                        <br />
+                        Marketing{' '}
+                        <Box
                             component="span"
-                            fontStyle="italic"
-                            color="text.secondary"
+                            sx={{
+                                fontStyle: 'italic',
+                                color: theme.palette.text.secondary,
+                                fontWeight: 600,
+                            }}
                         >
                             Strategies
-                        </Typography>
+                        </Box>
                     </Typography>
                 </Stack>
+
 
                 <Box
                     sx={{
@@ -527,20 +623,21 @@ function Hero() {
             </Box>
 
             {/* === Our Projects Section === */}
-            <Box component={'section'}>
-                <Stack
-                    textAlign="start"
-                    my={6}
-                    maxWidth={800}
-                >
-                    <Typography
-                        variant="subtitle1"
-                        color="text.secondary"
-                        letterSpacing={1}
-                        gutterBottom
-                    >
-                        Our Projects
-                    </Typography>
+            <Box component="section">
+                {/* Heading + Subheading + Description */}
+                <Stack textAlign="start" my={6} maxWidth={800}>
+                    {/* Heading with icon and uppercase */}
+                    <Stack direction="row" alignItems="center" gap={1} mb={1}>
+                        <WorkOutlineIcon color="secondary" fontSize="small" />
+                        <Typography
+                            variant="subtitle1"
+                            color="text.secondary"
+                            letterSpacing={2}
+                            sx={{ textTransform: 'uppercase', fontSize: '0.9rem', fontWeight: 600 }}
+                        >
+                            Our Projects
+                        </Typography>
+                    </Stack>
 
                     <Typography
                         variant={isSmallScreen ? 'h5' : 'h4'}
@@ -567,146 +664,106 @@ function Hero() {
                     </Typography>
                 </Stack>
 
+                {/* === Project Display Box (iframe + overlay) === */}
                 <Box
+                    onMouseEnter={() => setHovered(true)}
+                    onMouseLeave={() => setHovered(false)}
                     sx={{
+                        position: 'relative',
                         width: '100%',
-                        overflow: 'hidden',
-                        my: 2,
+                        height: 800,
                         borderRadius: 2,
-                        boxShadow: 3,
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: 1
+                        overflow: 'hidden',
+                        boxShadow: 4,
                     }}
                 >
-                    <Box
-                        component="iframe"
-                        src="https://react-admin-panel-behan.vercel.app"
-                        sx={{
-                            width: '100%',
-                            height: 800,
-                            border: 'none',
-                            borderRadius: 2,
-                        }}
-                    />
-
-                    {[
-                        {
-                            projectName: 'Rebuild Admin Panel',
-                            description:
-                                'A modernized, intuitive admin dashboard designed for better data visualization, streamlined content management, and full user activity tracking. Built with React, MUI, and integrated with backend APIs for seamless operations.',
-                            category: 'Web-Application',
-                            releaseDate: '06/04/2025',
-                        },
-                    ].map((project, index) => (
-                        <Stack key={index} p={2} gap={1}>
-                            <Typography
-                                color='text.primary'
-                                variant='subtitle1'
-                                fontWeight={700}
-                                component={'span'}
-                            >
-                                Project Name:{' '}
-                                <Typography
-                                    gutterBottom
-                                    color='text.secondary'
-                                    variant='body1'
-                                    fontWeight={400}
-                                    component={'span'}
-                                >
-                                    {project.projectName}
-                                </Typography>
-                            </Typography>
-
-                            <Typography
-                                color='text.primary'
-                                variant='subtitle1'
-                                fontWeight={700}
-                                component={'span'}
-                            >
-                                Description:{' '}
-                                <Typography
-                                    gutterBottom
-                                    color='text.secondary'
-                                    variant='body1'
-                                    fontWeight={400}
-                                    component={'span'}
-                                >
-                                    {project.description}
-                                </Typography>
-                            </Typography>
-
-                            <Typography
-                                color='text.primary'
-                                variant='subtitle1'
-                                fontWeight={700}
-                                component={'span'}
-                            >
-                                Category: {' '}
-                                <Typography
-                                    gutterBottom
-                                    color='text.secondary'
-                                    variant='body1'
-                                    component={'span'}
-                                    fontWeight={400}
-                                >
-                                    {project.category}
-                                </Typography>
-                            </Typography>
-
-                            <Typography
-                                color='text.primary'
-                                variant='subtitle1'
-                                fontWeight={700}
-                                component={'span'}
-                            >
-                                Release Date: {' '}
-                                <Typography
-                                    gutterBottom
-                                    color='text.primary'
-                                    variant='body1'
-                                    component={'span'}
-                                    fontWeight={400}
-                                >
-                                    {project.releaseDate}
-                                </Typography>
-                            </Typography>
-
-                            {/* take demo */}
+                    {/* iframe */}
+                    <Box sx={{ width: '100%', height: '100%' }}>
+                        <Box
+                            component="iframe"
+                            src="https://react-admin-panel-behan.vercel.app"
+                            sx={{
+                                width: '100%',
+                                height: '90%',
+                                border: 'none',
+                                pointerEvents: hovered ? 'auto' : 'none',
+                            }}
+                        />
+                        <Stack>
                             <CustomButton
                                 redirectedTo="https://react-admin-panel-behan.vercel.app"
                                 target="_blank"
-                                sx={{
-                                    width: 'fit-content',
-                                    my: 2,
-                                    gap: 2,
-                                    cursor: 'pointer',
-                                }}
+                                sx={{ mt: 2, mx: 'auto' }}
                                 endIcon={<LaunchIcon />}
                             >
                                 Launch Admin Panel
                             </CustomButton>
                         </Stack>
-                    ))}
+                    </Box>
+
+                    {/* Overlay */}
+                    {!hovered && (
+                        <Box
+                            sx={{
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                zIndex: 2,
+                                height: '100%',
+                                backgroundColor: "rgba(192, 194, 196, 0.1)",
+                                boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.1)",
+                                backdropFilter: 'blur(14px)',
+                                color: 'text.primary',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                px: 4,
+                                transition: 'opacity 0.4s ease',
+                            }}
+                        >
+                            <Stack spacing={5} maxWidth={700}>
+                                <Stack>
+                                    <Typography variant="h6" fontWeight={700}>Project Name:</Typography>
+                                    <Typography variant="subtitle1" color="grey.300">Rebuild Admin Panel</Typography>
+                                </Stack>
+                                <Stack>
+                                    <Typography variant="h6" fontWeight={700}>Category:</Typography>
+                                    <Typography variant="subtitle1" color="grey.300">Web-Application</Typography>
+                                </Stack>
+                                <Stack>
+                                    <Typography variant="h6" fontWeight={700}>Description:</Typography>
+                                    <Typography variant="subtitle1" color="grey.300">
+                                        A modern admin dashboard with clean UX, analytics & API integration built with React + MUI.
+                                    </Typography>
+                                </Stack>
+                                <Stack>
+                                    <Typography variant="h6" fontWeight={700}>Release Date:</Typography>
+                                    <Typography variant="subtitle1" color="grey.300">06/04/2025</Typography>
+                                </Stack>
+                            </Stack>
+                        </Box>
+                    )}
                 </Box>
-
-
             </Box>
+
 
             {/* == Why Choose Us Section == */}
             <WhyChooseUs />
 
             {/* == Our Process Section == */}
             <Box component={'section'}>
-                <Stack textAlign="center" my={4}>
-                    <Typography
-                        variant="subtitle1"
-                        color="text.secondary"
-                        letterSpacing={1}
-                        gutterBottom
-                    >
-                        Our Process
-                    </Typography>
+                <Stack textAlign="start" my={4}>
+                    <Stack direction="row" justifyContent="start" alignItems="center" spacing={1} mb={1}>
+                        <TimelineOutlinedIcon color="secondary" fontSize="small" />
+                        <Typography
+                            variant="subtitle1"
+                            color="text.secondary"
+                            sx={{ textTransform: 'uppercase', fontWeight: 600, letterSpacing: 2 }}
+                        >
+                            Our Process
+                        </Typography>
+                    </Stack>
 
                     <Typography
                         variant={isSmallScreen ? 'h5' : 'h4'}
@@ -719,10 +776,11 @@ function Hero() {
                     >
                         Our proven{' '}
                         <Box component="span" color="text.primary" fontStyle="normal">
-                            process for {<br></br>} achieving success
+                            process for <br /> achieving success
                         </Box>
                     </Typography>
                 </Stack>
+
 
                 <Box
                     gap={2}
@@ -731,100 +789,105 @@ function Hero() {
                         gridTemplateColumns: isSmallScreen ? '1fr' : isLg ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)',
                     }}
                 >
-
                     {[
                         {
                             number: '01.',
                             title: `Discovery Phase`,
-                            content: 'During this initial stage, we delve deep into understanding your business goals, target audience, and market landscape.',
+                            icon: <SearchOutlinedIcon sx={{ fontSize: '1.8rem', color: theme.palette.primary.main }} />,
+                            content: 'We delve deep into understanding your business goals, audience, and market.',
                             image: process1,
                         },
                         {
                             number: '02.',
                             title: `Strategy Development`,
-                            content: 'With insights gathered from the discovery phase, we develop a customized strategy tailored to your specific needs.',
+                            icon: <EngineeringOutlinedIcon sx={{ fontSize: '1.8rem', color: theme.palette.secondary.main }} />,
+                            content: 'We create a strategy tailored to your specific needs.',
                             image: process2,
                         },
                         {
                             number: '03.',
                             title: `Implementation`,
-                            content: 'Once the strategy is finalized and approved, we roll up our sleeves and put the plan into action.',
+                            icon: <RocketLaunchOutlinedIcon sx={{ fontSize: '1.8rem', color: theme.palette.success.main }} />,
+                            content: 'We execute the plan with full force and clarity.',
                             image: process3,
                         },
-                    ].map((card, index) => (
-
-                        <Stack
-                            borderRadius={2}
-                            boxShadow={3}
-                            key={index}
-                            p={2}
-                            sx={{
-                                background: 'linear-gradient(125deg,rgba(179, 85, 31, 0.1),rgba(179, 85, 209, 0.1) ,rgba(176, 71, 237, 0.1))',
-                                backdropFilter: 'blur(4px)',
-
-                            }}
-                        >
-                            <Typography
-                                color='text.secondary'
-                                fontWeight={900}
-                                gutterBottom
-                                variant='subtitle2'
-                            >
-                                {card.number}
-                            </Typography>
-
-                            <Typography
-                                color='text.primary'
-                                fontWeight={600}
-                                gutterBottom
-                                letterSpacing={1}
-                                variant='subtitle1'
-                            >
-                                {card.title}
-                            </Typography>
-
-                            <Typography
-                                color='text.secondary'
-                                fontWeight={400}
-                                gutterBottom
-                                letterSpacing={1}
-                                variant='body1'
-                            >
-                                {card.content}
-                            </Typography>
+                    ]
+                        .map((card, index) => (
                             <Stack
-                                component={'img'}
-                                src={card.image}
-                                alt={card.title}
-                                maxWidth={"100%"}
+                                key={index}
+                                borderRadius={2}
+                                boxShadow="0 8px 32px 0 rgba(0, 0, 0, 0.1)"
+                                p={2}
+                                spacing={2}
                                 sx={{
-                                    objectFit: 'cover',
-                                    borderRadius: 2,
-                                    opacity: 0.8,
+                                    backgroundColor: "rgba(192, 194, 196, 0.1)",
+                                    backdropFilter: "blur(10px)",
                                     transition: 'all 0.3s ease',
-                                    filter: 'brightness(100%)',
+                                    minHeight: 420,
                                     '&:hover': {
-                                        opacity: 1,
-                                        filter: 'brightness(120%)',
-                                    }
+                                        transform: 'translateY(-10px)',
+                                    },
                                 }}
-                            />
-                        </Stack>
-                    ))}
+                            >
+
+                                {card.icon}
+
+
+                                <Typography
+                                    color="text.primary"
+                                    fontWeight={600}
+                                    variant="subtitle1"
+                                    letterSpacing={1}
+                                >
+                                    {card.title}
+                                </Typography>
+
+                                <Typography
+                                    color="text.secondary"
+                                    fontWeight={400}
+                                    variant="body1"
+                                    letterSpacing={1}
+                                >
+                                    {card.content}
+                                </Typography>
+
+                                <Stack
+                                    component="img"
+                                    src={card.image}
+                                    alt={card.title}
+                                    maxWidth="100%"
+                                    sx={{
+                                        objectFit: 'cover',
+                                        borderRadius: 2,
+                                        opacity: 0.85,
+                                        mt: 1,
+                                        transition: 'all 0.3s ease',
+                                        filter: 'brightness(100%)',
+                                        '&:hover': {
+                                            opacity: 1,
+                                            filter: 'brightness(120%)',
+                                        },
+                                    }}
+                                />
+                            </Stack>
+                        ))}
                 </Box>
+
             </Box>
 
             {/* == Testimonials Section == */}
-            <Box component={'section'}>
-                <Stack>
+            <Box component={'section'} mt={8}>
+                <Stack spacing={1} textAlign="start" mb={4}>
                     <Typography
-                        variant='subtitle1'
-                        color='text.secondary'
-                        mt={4}
-                        letterSpacing={1}
+                        variant="subtitle1"
+                        color="text.secondary"
+                        letterSpacing={2}
+                        sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
                     >
-                        Testimonials
+                        <FormatQuoteIcon fontSize="small" />
+                        TESTIMONIALS
                     </Typography>
+
                     <Typography
                         variant={isSmallScreen ? 'h5' : 'h4'}
                         component="h1"
@@ -835,7 +898,7 @@ function Hero() {
                         gutterBottom
                     >
                         Review{' '}
-                        <Box component="span" color="text.primary" sx={{fontWeight: 700}} fontStyle="normal">
+                        <Box component="span" color="text.primary" sx={{ fontWeight: 700 }} fontStyle="normal">
                             From Clients
                         </Box>
                     </Typography>
@@ -886,22 +949,26 @@ function Hero() {
             </Box>
 
             {/* == FAQ Section == */}
-            <Stack sx={{
-                borderRadius: 2,
-                mt: 6,
-            }}>
+            <Stack
+                sx={{
+                    borderRadius: 2,
+                    mt: 6,
+                }}
+            >
                 <Box
-                    component={'section'}
-                    textAlign={'center'}
+                    component="section"
+                    textAlign="center"
                     maxWidth={800}
-                    mx={'auto'}
+                    mx="auto"
                 >
-                    <Stack>
+                    <Stack spacing={1}>
                         <Typography
-                            variant='body1'
-                            mt={5}
-                            color='text.primary'
+                            variant="subtitle1"
+                            color="text.secondary"
+                            letterSpacing={1}
+                            sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 1 }}
                         >
+                            <QuizIcon fontSize="small" />
                             FAQ
                         </Typography>
 
@@ -916,20 +983,24 @@ function Hero() {
                         >
                             What{' '}
                             <Box component="span" color="text.primary" fontStyle="normal">
-                                are you confused about? <br /> here the answers.
+                                are you confused about? <br /> Here are the answers.
                             </Box>
                         </Typography>
                     </Stack>
+
+                    {/* FAQ List */}
                     {faqs.map((faq, index) => (
                         <Accordion
                             key={index}
                             disableGutters
-                            elevation={1}
+                            elevation={3}
                             sx={{
                                 my: 2,
-                                background: 'linear-gradient(125deg,rgba(246, 112, 37, 0.2) 50%,rgba(179, 85, 209, 0.1) 10%,rgba(176, 71, 237, 0.2))',
-                                boxShadow: 'inset 0 0 0.2rem',
-                                backdropFilter: 'blur(10px)'
+                                px: 1,
+                                background: 'linear-gradient(125deg, rgba(246, 112, 37, 0.2) 50%, rgba(179, 85, 209, 0.1), rgba(176, 71, 237, 0.2))',
+                                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.08)',
+                                backdropFilter: 'blur(10px)',
+                                borderRadius: 2,
                             }}
                         >
                             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
@@ -939,16 +1010,21 @@ function Hero() {
                             </AccordionSummary>
 
                             <AccordionDetails>
-                                <Typography color="text.secondary">{faq.answer}</Typography>
+                                <Typography color="text.secondary" variant="body2" sx={{ textAlign: 'left', lineHeight: 1.6 }}>
+                                    {faq.answer}
+                                </Typography>
                             </AccordionDetails>
                         </Accordion>
                     ))}
 
-                    <Typography mt={4} variant='h6' color='text.secondary'>Still Have Questions?</Typography>
+                    {/* Footer CTA */}
+                    <Typography mt={4} variant="h6" color="text.secondary">
+                        Still Have Questions?
+                    </Typography>
+
                     <Contact />
                 </Box>
             </Stack>
-
         </Box>
     );
 }
